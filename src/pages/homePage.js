@@ -7,10 +7,9 @@ import sun from '../images/sun.png';
 import round from '../images/round.png';
 import sluck from '../images/slack.png';
 import triangle from '../images/triangle.png';
-import lobule from '../images/lobule.svg';
-import lobuleBlue from '../images/lobule-blue.svg';
-import rain from '../images/rain.svg';
-import {Link} from 'react-router-dom';
+import YellowPlate from '../components/yellowPlate';
+import BluePlate from '../components/bluePlate';
+import PurplePlate from '../components/purplePlate';
 
 const useStyles = makeStyles({
   container: {
@@ -23,6 +22,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+  },
+  headerBG: {
+    width: '67.5%',
   },
   title: {
     fontFamily: 'Duster Regular',
@@ -95,61 +97,6 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
-  yellowPlate: {
-    padding: '75px 61px 48px 118px',
-    width: '70%',
-    marginLeft: '1.8%',
-    background: '#FFDC00',
-    position: 'relative',
-  },
-  yellowPlateBorder: {
-    position: 'absolute',
-    left: 9,
-    top: 14,
-    right: -9,
-    bottom: -14,
-    border: '1px solid #8C9DD0',
-    zIndex: 1300,
-  },
-  lobule: {
-    position: 'absolute',
-    top: -23,
-    right: -187,
-  },
-  lobuleBlue: {
-    position: 'absolute',
-    top: 118,
-    right: -230,
-  },
-  rain: {
-    position: 'absolute',
-    top: 118 + 25,
-    right: -345,
-  },
-  plateTitle: {
-    fontSize: 48,
-    fontFamily: 'Duster Regular',
-  },
-  divider: {
-    width: '100%',
-    height: 3,
-    background: '#8C9DD0',
-  },
-  plateTextGroup: {
-    display: 'flex',
-  },
-  descriptionGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  benefitText: {
-    display: 'block',
-    marginRight: 43,
-    marginTop: 10,
-    fontSize: 32,
-    fontFamily: 'Duster Regular',
-  },
 });
 
 const HomePage = () => {
@@ -157,7 +104,7 @@ const HomePage = () => {
   return (
     <div className={classes.container}>
       <header className={classes.header}>
-        <img src={headerBG} />
+        <img src={headerBG} alt="header-bg" className={classes.headerBG} />
         <h6 className={classes.title}>Surveys</h6>
         <p className={classes.description}>Simple. Powerfull. On Time.</p>
         <button className={classes.startBtn}>Start the Survey</button>
@@ -205,33 +152,9 @@ const HomePage = () => {
           </div>
         </div>
         <div className={classes.plates}>
-          <div className={classes.yellowPlate}>
-            <div className={classes.yellowPlateBorder}></div>
-            <img alt="lobule" src={lobule} className={classes.lobule} />
-            <img alt="rain" src={rain} className={classes.rain} />
-            <img
-              alt="lobule-blue"
-              src={lobuleBlue}
-              className={classes.lobuleBlue}
-            />
-            <h6 className={classes.plateTitle}>Learn the Pricing Plans</h6>
-            <div className={classes.divider} />
-            <div className={classes.plateTextGroup}>
-              <p className={classes.benefitText}>
-                Starting from $1 per respondent voice
-              </p>
-              <div className={classes.descriptionGroup}>
-                <p>
-                  Favorable prices, subscriptions and regular client benefits,
-                  transparent pricing policy.
-                </p>
-                <Link to="/">
-                  <p>Pricing Plans</p>
-                  <img />
-                </Link>
-              </div>
-            </div>
-          </div>
+          <YellowPlate />
+          <BluePlate />
+          <PurplePlate />
         </div>
       </main>
     </div>

@@ -21,12 +21,12 @@ const Carousel = ({index, productsArray, requestToChangeActive}) => {
       numberOfCards={numberOfCards}
       gutter={20}
       requestToChangeActive={requestToChangeActive}>
-      {productsArray.map(({title, description, text, line}) => (
+      {productsArray.map(({title, description, text, lineColors}) => (
         <ProductCard
           title={title}
           description={description}
           key={title}
-          line={line}>
+          colors={lineColors}>
           {text}
         </ProductCard>
       ))}

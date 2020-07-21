@@ -305,8 +305,7 @@ const productsArray = [
     text: `Identify and monitor strategic targets size and profile for
     business planning, focused in-market, retail and communication
     strategies.`,
-    line:
-      'linear-gradient(90deg, #8C9DD0, #8C9DD0 33%, #FFDC00 33%, #FFDC00 66%, #53C8E1 66%, #53C8E1 100%',
+    lineColors: ['#8C9DD0', '#FFDC00', '#53C8E1'],
   },
   {
     title: 'Audience Portrait & Size',
@@ -314,7 +313,7 @@ const productsArray = [
     text: `Identify and monitor strategic targets size and profile for
     business planning, focused in-market, retail and communication
     strategies.`,
-    line: 'linear-gradient(90deg, #8C9DD0 50%, #3E245C 50%',
+    lineColors: ['#8C9DD0', '#3E245C'],
   },
   {
     title: 'Audience Portrait & Size',
@@ -322,7 +321,7 @@ const productsArray = [
     text: `Identify and monitor strategic targets size and profile for
     business planning, focused in-market, retail and communication
     strategies.`,
-    line: 'linear-gradient(90deg, #8C9DD0 50%, #FFDC00 50%',
+    lineColors: ['#8C9DD0', '#FFDC00'],
   },
   {
     title: 'Audience Portrait & Size',
@@ -330,7 +329,7 @@ const productsArray = [
     text: `Identify and monitor strategic targets size and profile for
     business planning, focused in-market, retail and communication
     strategies.`,
-    line: 'linear-gradient(90deg, #8C9DD0 50%, #3E245C 50%',
+    lineColors: ['#8C9DD0', '#3E245C'],
   },
   {
     title: 'Audience Portrait & Size',
@@ -338,8 +337,7 @@ const productsArray = [
     text: `Identify and monitor strategic targets size and profile for
     business planning, focused in-market, retail and communication
     strategies.`,
-    line:
-      'linear-gradient(90deg, #8C9DD0, #8C9DD0 33%, #FFDC00 33%, #FFDC00 66%, #53C8E1 66%, #53C8E1',
+    lineColors: ['#8C9DD0', '#FFDC00', '#53C8E1'],
   },
 ];
 

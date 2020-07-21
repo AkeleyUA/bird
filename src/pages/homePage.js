@@ -23,7 +23,6 @@ import triangleToLeft from '../images/triangle-to-left.svg';
 import soSmallBrokenLine from '../images/so-small-broken-line.svg';
 import triangleToRight from '../images/triangle-to-right.svg';
 import mediumBrokenLineBlue from '../images/medium-broken-line-blue.svg';
-import Footer from '../components/footer';
 import Carousel from '../components/carousel';
 
 const useStyles = makeStyles({
@@ -552,7 +551,6 @@ const HomePage = () => {
           <button className={classes.startBtn}>Start the Survey</button>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

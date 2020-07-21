@@ -1,24 +1,37 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ItemsCarousel from 'react-items-carousel';
+import ProductCard from './productCard';
 
-export default ({index}) => {
-  const chevronWidth = 40;
+const Carousel = ({index, productsArray, requestToChangeActive}) => {
+  const [numberOfCards, setNumberOfCards] = useState(4);
+  useEffect(() => {
+    if (window.innerWidth < 575) {
+      setNumberOfCards(1);
+    } else if (window.innerWidth < 768) {
+      setNumberOfCards(2);
+    } else if (window.innerWidth < 992) {
+      setNumberOfCards(3);
+    } else {
+      setNumberOfCards(4);
+    }
+  }, []);
   return (
-    <div style={{padding: `0 ${chevronWidth}px`}}>
-      <ItemsCarousel
-        requestToChangeActive={setActiveItemIndex}
-        activeItemIndex={activeItemIndex}
-        numberOfCards={2}
-        gutter={20}
-        leftChevron={<button>{'<'}</button>}
-        rightChevron={<button>{'>'}</button>}
-        outsideChevron
-        chevronWidth={chevronWidth}>
-        <div style={{height: 200, background: '#EEE'}}>First card</div>
-        <div style={{height: 200, background: '#EEE'}}>Second card</div>
-        <div style={{height: 200, background: '#EEE'}}>Third card</div>
-        <div style={{height: 200, background: '#EEE'}}>Fourth card</div>
-      </ItemsCarousel>
-    </div>
+    <ItemsCarousel
+      activeItemIndex={index}
+      numberOfCards={numberOfCards}
+      gutter={20}
+      requestToChangeActive={requestToChangeActive}>
+      {productsArray.map(({title, description, text, line}) => (
+        <ProductCard
+          title={title}
+          description={description}
+          key={title}
+          line={line}>
+          {text}
+        </ProductCard>
+      ))}
+    </ItemsCarousel>
   );
 };
+
+export default Carousel;

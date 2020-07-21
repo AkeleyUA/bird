@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/styles';
 import {Link} from 'react-router-dom';
 import headerBG from '../images/header-bg.svg';
@@ -23,8 +23,8 @@ import triangleToLeft from '../images/triangle-to-left.svg';
 import soSmallBrokenLine from '../images/so-small-broken-line.svg';
 import triangleToRight from '../images/triangle-to-right.svg';
 import mediumBrokenLineBlue from '../images/medium-broken-line-blue.svg';
-import ProductCard from '../components/productCard';
 import Footer from '../components/footer';
+import Carousel from '../components/carousel';
 
 const useStyles = makeStyles({
   container: {
@@ -261,7 +261,6 @@ const useStyles = makeStyles({
     marginBottom: 21,
   },
   productCards: {
-    display: 'flex',
     marginBottom: 45,
   },
   controler: {
@@ -299,8 +298,68 @@ const useStyles = makeStyles({
   },
 });
 
+const productsArray = [
+  {
+    title: 'Audience Portrait & Size',
+    description: 'Product description',
+    text: `Identify and monitor strategic targets size and profile for
+    business planning, focused in-market, retail and communication
+    strategies.`,
+    line:
+      'linear-gradient(90deg, #8C9DD0, #8C9DD0 33%, #FFDC00 33%, #FFDC00 66%, #53C8E1 66%, #53C8E1 100%',
+  },
+  {
+    title: 'Audience Portrait & Size',
+    description: 'Product description',
+    text: `Identify and monitor strategic targets size and profile for
+    business planning, focused in-market, retail and communication
+    strategies.`,
+    line: 'linear-gradient(90deg, #8C9DD0 50%, #3E245C 50%',
+  },
+  {
+    title: 'Audience Portrait & Size',
+    description: 'Product description',
+    text: `Identify and monitor strategic targets size and profile for
+    business planning, focused in-market, retail and communication
+    strategies.`,
+    line: 'linear-gradient(90deg, #8C9DD0 50%, #FFDC00 50%',
+  },
+  {
+    title: 'Audience Portrait & Size',
+    description: 'Product description',
+    text: `Identify and monitor strategic targets size and profile for
+    business planning, focused in-market, retail and communication
+    strategies.`,
+    line: 'linear-gradient(90deg, #8C9DD0 50%, #3E245C 50%',
+  },
+  {
+    title: 'Audience Portrait & Size',
+    description: 'Product description',
+    text: `Identify and monitor strategic targets size and profile for
+    business planning, focused in-market, retail and communication
+    strategies.`,
+    line:
+      'linear-gradient(90deg, #8C9DD0, #8C9DD0 33%, #FFDC00 33%, #FFDC00 66%, #53C8E1 66%, #53C8E1',
+  },
+];
+
 const HomePage = () => {
+  const [activeItemIndex, setActiveItemIndex] = useState(0);
   const classes = useStyles();
+
+  const leftHandler = () => {
+    setActiveItemIndex((prevState) => (prevState === 0 ? 0 : prevState - 1));
+  };
+
+  const rightHandler = () => {
+    console.log(activeItemIndex);
+    setActiveItemIndex((prevState) =>
+      prevState === productsArray.length - 4
+        ? productsArray.length - 4
+        : prevState + 1,
+    );
+  };
+
   return (
     <div className={classes.container}>
       <header className={classes.header}>
@@ -453,6 +512,7 @@ const HomePage = () => {
                 alt="triangle-to-left"
                 src={triangleToLeft}
                 className={classes.controler}
+                onClick={leftHandler}
               />
               <img
                 alt="so-small-broken-line"
@@ -463,50 +523,17 @@ const HomePage = () => {
                 alt="triangle-to-right"
                 src={triangleToRight}
                 className={classes.controler}
+                onClick={rightHandler}
               />
             </div>
           </div>
           <div className={classes.divider} />
           <div className={classes.productCards}>
-            <ProductCard
-              title="Audience Portrait & Size"
-              description="Product description">
-              Identify and monitor strategic targets size and profile for
-              business planning, focused in-market, retail and communication
-              strategies.
-            </ProductCard>
-            <ProductCard
-              title="Habits & Practices Exploratory"
-              description="Product description">
-              Identify and monitor strategic targets size and profile for
-              business planning, focused in-market, retail and communication
-              strategies.
-            </ProductCard>
-            <ProductCard
-              title="Price & Demand Sizing"
-              description="Product description">
-              Learn and monitor demand elasticity with price change, adapt your
-              strategies, engage with potential customers to equip your
-              innovation ideas with shelf price insight.
-            </ProductCard>
-            <ProductCard
-              title="Commercials & Ideas Early Testing"
-              description="Product description">
-              Develop data-backed campaigns, test early-stage creative concepts,
-              or support your ideas with consumer report during a pitch.
-            </ProductCard>
-            <ProductCard
-              title="Commercials & Ideas Early Testing"
-              description="Product description">
-              Develop data-backed campaigns, test early-stage creative concepts,
-              or support your ideas with consumer report during a pitch.
-            </ProductCard>
-            <ProductCard
-              title="Commercials & Ideas Early Testing"
-              description="Product description">
-              Develop data-backed campaigns, test early-stage creative concepts,
-              or support your ideas with consumer report during a pitch.
-            </ProductCard>
+            <Carousel
+              index={activeItemIndex}
+              productsArray={productsArray}
+              requestToChangeActive={setActiveItemIndex}
+            />
           </div>
           <div className={classes.productFooter}>
             <Link to="/" className={classes.link}>

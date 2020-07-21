@@ -5,13 +5,9 @@ const useStyles = makeStyles({
   productCard: {
     padding: 18,
     backgroundColor: '#F7F7F7',
-    width: 310,
-    marginRight: 20,
-  },
-  colorLine: {
-    width: '100%',
-    backgroundColor: '#000',
-    height: 8,
+    width: '90%',
+    maxWidth: 310,
+    minHeight: 248,
   },
   header: {
     display: 'flex',
@@ -48,7 +44,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ProductCard = ({title, children, description}) => {
+const ProductCard = ({title, children, description, line}) => {
   const classes = useStyles();
   const [isLike, setIsLike] = useState(false);
   const likeHandler = () => {
@@ -57,7 +53,14 @@ const ProductCard = ({title, children, description}) => {
   return (
     <div className={classes.productCard}>
       <header className={classes.header}>
-        <div className={classes.colorLine} />
+        <div
+          className={classes.colorLine}
+          style={{
+            background: line,
+            width: '100%',
+            height: 8,
+          }}
+        />
         <div className={classes.handlerWrapper} onClick={likeHandler}>
           <svg
             width="18"

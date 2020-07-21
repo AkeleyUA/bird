@@ -1,5 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/styles';
+import {Link} from 'react-router-dom';
 import headerBG from '../images/header-bg.svg';
 import Benefit from '../components/benefit';
 import duck from '../images/duck.png';
@@ -18,8 +19,12 @@ import bird from '../images/bird.svg';
 import brokenLine from '../images/long-broken-line.svg';
 import brokenLineBlue from '../images/long-broken-line-blue.svg';
 import arrowRight from '../images/arrow-right.svg';
-import {Link} from 'react-router-dom';
+import triangleToLeft from '../images/triangle-to-left.svg';
+import soSmallBrokenLine from '../images/so-small-broken-line.svg';
+import triangleToRight from '../images/triangle-to-right.svg';
+import mediumBrokenLineBlue from '../images/medium-broken-line-blue.svg';
 import ProductCard from '../components/productCard';
+import Footer from '../components/footer';
 
 const useStyles = makeStyles({
   container: {
@@ -49,6 +54,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
     color: '#8C9DD0',
     marginTop: 20,
+    marginBottom: 125,
   },
   startBtn: {
     background: '#FFDC00',
@@ -57,7 +63,6 @@ const useStyles = makeStyles({
     fontSize: 26,
     textAlign: 'center',
     color: '#000000',
-    marginTop: 125,
     width: 280,
     height: 56,
     display: 'flex',
@@ -235,6 +240,14 @@ const useStyles = makeStyles({
     width: '96%',
     margin: '0 auto',
   },
+  productsHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  controlers: {
+    display: 'flex',
+    alignItems: 'center',
+  },
   productsTitle: {
     marginBottom: 16,
     fontFamily: 'Duster Regular',
@@ -250,6 +263,39 @@ const useStyles = makeStyles({
   productCards: {
     display: 'flex',
     marginBottom: 45,
+  },
+  controler: {
+    cursor: 'pointer',
+  },
+  productFooter: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  invitation: {
+    maxWidth: 1139,
+    width: '79%',
+    margin: '0 auto',
+    background: '#F7F7F7',
+    marginTop: 96,
+    marginBottom: 42,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '45px 0',
+    position: 'relative',
+  },
+  invitationTitle: {
+    fontFamily: 'Duster Regular',
+    fontSize: 26,
+    textAlign: 'center',
+    color: '#3E245C',
+    marginBottom: 16,
+  },
+  mediumBrokenLineBlue: {
+    position: 'absolute',
+    left: '20.58%',
+    top: -10,
   },
 });
 
@@ -402,7 +448,23 @@ const HomePage = () => {
         <div className={classes.products}>
           <div className={classes.productsHeader}>
             <h6 className={classes.productsTitle}>Products</h6>
-            <div className={classes.controlesr}></div>
+            <div className={classes.controlers}>
+              <img
+                alt="triangle-to-left"
+                src={triangleToLeft}
+                className={classes.controler}
+              />
+              <img
+                alt="so-small-broken-line"
+                src={soSmallBrokenLine}
+                className={classes.soSmallBrokenLine}
+              />
+              <img
+                alt="triangle-to-right"
+                src={triangleToRight}
+                className={classes.controler}
+              />
+            </div>
           </div>
           <div className={classes.divider} />
           <div className={classes.productCards}>
@@ -446,8 +508,26 @@ const HomePage = () => {
               or support your ideas with consumer report during a pitch.
             </ProductCard>
           </div>
+          <div className={classes.productFooter}>
+            <Link to="/" className={classes.link}>
+              <p className={classes.linkText}>Check out our Products</p>
+              <img alt="arrow-right" src={arrowRight} />
+            </Link>
+          </div>
+        </div>
+        <div className={classes.invitation}>
+          <img
+            className={classes.mediumBrokenLineBlue}
+            alt="medium-broken-line-blue"
+            src={mediumBrokenLineBlue}
+          />
+          <h3 className={classes.invitationTitle}>
+            Construct your new questionnaire
+          </h3>
+          <button className={classes.startBtn}>Start the Survey</button>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

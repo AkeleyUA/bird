@@ -41,7 +41,7 @@ const CoinBtn = ({src, children}) => {
   return (
     <button className={classes.coinBtn}>
       <div className={classes.coin}>
-        <img src={src} className={classes.icon} />
+        <img src={src} className={classes.icon} alt="coin-icon" />
       </div>
       <p className={classes.coinBtnTitle}>{children}</p>
     </button>

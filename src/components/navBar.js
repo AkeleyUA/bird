@@ -127,7 +127,7 @@ const NavBar = () => {
     <nav className={classes.navContainer}>
       <div className={classes.leftSide}>
         <NavLink to="/">
-          <img src={logo} className={classes.logo} />
+          <img src={logo} className={classes.logo} alt="logo" />
         </NavLink>
         <div className={classes.linksContainer}>
           <NavLink
@@ -169,7 +169,11 @@ const NavBar = () => {
           <div className={classes.quickAcsess} />
           <p className={classes.quickAcsessTitle}>Quick acsess</p>
           <div className={classes.elipse} />
-          <img src={settings} className={classes.settingsIcon} />
+          <img
+            src={settings}
+            className={classes.settingsIcon}
+            alt="settings-icon"
+          />
           <CoinBtn src={netWork}>My Reports</CoinBtn>
           <CoinBtn src={plus}>New Survay</CoinBtn>
         </div>

@@ -69,7 +69,6 @@ const useStyles = makeStyles({
   },
   quickAcsessContainer: {
     position: 'relative',
-    minWidth: 150,
     height: 106,
     display: 'flex',
     justifyContent: 'space-around',

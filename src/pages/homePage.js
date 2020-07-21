@@ -10,6 +10,10 @@ import triangle from '../images/triangle.png';
 import YellowPlate from '../components/yellowPlate';
 import BluePlate from '../components/bluePlate';
 import PurplePlate from '../components/purplePlate';
+import QuestionsImage from '../components/questionsImage';
+import ThinkImage from '../components/thinkImage';
+import brokenLine from '../images/small-broken-line.svg';
+import brokenLineBlue from '../images/small-broken-line-blue.svg';
 
 const useStyles = makeStyles({
   container: {
@@ -97,6 +101,83 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
+  questions: {
+    position: 'relative',
+  },
+  brokenLine: {
+    position: 'absolute',
+    left: 160,
+    top: 27,
+  },
+  brokenLineBlue: {
+    position: 'absolute',
+    left: 207,
+    top: 56,
+  },
+  questionCards: {
+    paddingTop: 83,
+    display: 'flex',
+    justifyContent: 'space-around',
+    transform: 'rotate(-5deg)',
+  },
+  card: {
+    maxWidth: 375 + 50,
+    width: '70%',
+    display: 'flex',
+    flexDirection: 'column',
+    transform: 'rotate(5deg)',
+  },
+  question: {
+    padding: '22px 48px 28px 32px',
+    maxWidth: 375 - 38 - 32,
+    background: '#8C9DD0',
+    borderRadius: 4,
+    alignSelf: 'flex-start',
+    position: 'relative',
+  },
+  questionTriangle: {
+    content: '',
+    position: 'absolute',
+    left: 0,
+    bottom: -30,
+    border: '16px solid transparent',
+    borderLeft: '16px solid #8C9DD0',
+    borderTop: '16px solid #8C9DD0',
+  },
+  questionText: {
+    fontFamily: 'PT Sans',
+    fontWeight: 'bold',
+    fontSize: 20,
+    display: 'flex',
+    alignItems: 'center',
+    letterSpacing: '0.02em',
+    color: '#FFFFFF',
+  },
+  answer: {
+    marginTop: 17,
+    padding: '22px 48px 28px 32px',
+    maxWidth: 375 - 38 - 32,
+    background: '#FFDC00',
+    borderRadius: 4,
+    alignSelf: 'flex-end',
+  },
+  answerTriangle: {
+    content: '',
+    position: 'absolute',
+    right: 40,
+    bottom: -30,
+    border: '16px solid transparent',
+    borderLeft: '16px solid #FFDC00',
+    borderTop: '16px solid #FFDC00',
+  },
+  answerText: {
+    fontFamily: 'PT Sans',
+    fontSize: 20,
+    display: 'flex',
+    alignItems: 'center',
+    letterSpacing: '0.02em',
+    color: '#3E245C',
+  },
 });
 
 const HomePage = () => {
@@ -155,6 +236,69 @@ const HomePage = () => {
           <YellowPlate />
           <BluePlate />
           <PurplePlate />
+        </div>
+        <div className={classes.questions}>
+          <QuestionsImage />
+          <ThinkImage />
+          <img
+            alt="broken-line"
+            src={brokenLine}
+            className={classes.brokenLine}
+          />
+          <img
+            alt="broken-line-blue"
+            src={brokenLineBlue}
+            className={classes.brokenLineBlue}
+          />
+          <div className={classes.questionCards}>
+            <div className={classes.card}>
+              <div className={classes.question}>
+                <div className={classes.questionTriangle}></div>
+                <p className={classes.questionText}>
+                  Some common question about service number one?
+                </p>
+              </div>
+              <div className={classes.answer}>
+                <div className={classes.answerTriangle}></div>
+                <p className={classes.answerText}>
+                  Yes. Answer in some words and comment about answer. Answer in
+                  some words and comment about answer.
+                </p>
+              </div>
+            </div>
+            <div className={classes.card}>
+              <div className={classes.question}>
+                <div className={classes.triangle}></div>
+                <p className={classes.questionText}>
+                  Some common question about service number one?
+                </p>
+              </div>
+              <div className={classes.answer}>
+                <div className={classes.answerTriangle}></div>
+
+                <p className={classes.answerText}>
+                  Yes. Answer in some words and comment about answer. Answer in
+                  some words and comment about answer.
+                </p>
+              </div>
+            </div>
+            <div className={classes.card}>
+              <div className={classes.question}>
+                <div className={classes.triangle}></div>
+                <p className={classes.questionText}>
+                  Some common question about service number one?
+                </p>
+              </div>
+              <div className={classes.answer}>
+                <div className={classes.answerTriangle}></div>
+
+                <p className={classes.answerText}>
+                  Yes. Answer in some words and comment about answer. Answer in
+                  some words and comment about answer.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>

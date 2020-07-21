@@ -12,8 +12,14 @@ import BluePlate from '../components/bluePlate';
 import PurplePlate from '../components/purplePlate';
 import QuestionsImage from '../components/questionsImage';
 import ThinkImage from '../components/thinkImage';
-import brokenLine from '../images/small-broken-line.svg';
-import brokenLineBlue from '../images/small-broken-line-blue.svg';
+import smallBrokenLine from '../images/small-broken-line.svg';
+import smallBrokenLineBlue from '../images/small-broken-line-blue.svg';
+import bird from '../images/bird.svg';
+import brokenLine from '../images/long-broken-line.svg';
+import brokenLineBlue from '../images/long-broken-line-blue.svg';
+import arrowRight from '../images/arrow-right.svg';
+import {Link} from 'react-router-dom';
+import ProductCard from '../components/productCard';
 
 const useStyles = makeStyles({
   container: {
@@ -104,25 +110,27 @@ const useStyles = makeStyles({
   questions: {
     position: 'relative',
   },
-  brokenLine: {
+  smallBrokenLine: {
     position: 'absolute',
     left: 160,
     top: 27,
   },
-  brokenLineBlue: {
+  smallBrokenLineBlue: {
     position: 'absolute',
     left: 207,
     top: 56,
   },
   questionCards: {
+    width: '95%',
     paddingTop: 83,
     display: 'flex',
     justifyContent: 'space-around',
     transform: 'rotate(-5deg)',
+    margin: '0 auto',
   },
   card: {
     maxWidth: 375 + 50,
-    width: '70%',
+    width: '60%',
     display: 'flex',
     flexDirection: 'column',
     transform: 'rotate(5deg)',
@@ -130,6 +138,7 @@ const useStyles = makeStyles({
   question: {
     padding: '22px 48px 28px 32px',
     maxWidth: 375 - 38 - 32,
+    width: '70%',
     background: '#8C9DD0',
     borderRadius: 4,
     alignSelf: 'flex-start',
@@ -157,6 +166,7 @@ const useStyles = makeStyles({
     marginTop: 17,
     padding: '22px 48px 28px 32px',
     maxWidth: 375 - 38 - 32,
+    width: '70%',
     background: '#FFDC00',
     borderRadius: 4,
     alignSelf: 'flex-end',
@@ -177,6 +187,69 @@ const useStyles = makeStyles({
     alignItems: 'center',
     letterSpacing: '0.02em',
     color: '#3E245C',
+  },
+  birdWrapper: {
+    width: '100%',
+  },
+  bird: {
+    marginTop: 70,
+    marginLeft: '19.2%',
+  },
+  moreQuestions: {
+    marginTop: -10,
+    marginLeft: '23%',
+    marginBottom: 143,
+    display: 'flex',
+  },
+  link: {
+    display: 'flex',
+    marginTop: 10,
+    textDecoration: 'none',
+    alignItems: 'center',
+    zIndex: 1300,
+  },
+  linkText: {
+    fontFamily: 'PT Sans',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
+    letterSpacing: '0.02em',
+    color: '#3E245C',
+    marginRight: 13,
+  },
+  brokenLinesWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginRight: 28,
+  },
+  moreQuestionsTitle: {
+    fontFamily: 'PT Sans',
+    fontSize: 20,
+    letterSpacing: '0.02em',
+  },
+  textWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  products: {
+    width: '96%',
+    margin: '0 auto',
+  },
+  productsTitle: {
+    marginBottom: 16,
+    fontFamily: 'Duster Regular',
+    fontSize: 48,
+    color: '#3E245C',
+  },
+  divider: {
+    width: '100%',
+    height: 2,
+    backgroundColor: '#8C9DD0',
+    marginBottom: 21,
+  },
+  productCards: {
+    display: 'flex',
+    marginBottom: 45,
   },
 });
 
@@ -242,13 +315,13 @@ const HomePage = () => {
           <ThinkImage />
           <img
             alt="broken-line"
-            src={brokenLine}
-            className={classes.brokenLine}
+            src={smallBrokenLine}
+            className={classes.smallBrokenLine}
           />
           <img
             alt="broken-line-blue"
-            src={brokenLineBlue}
-            className={classes.brokenLineBlue}
+            src={smallBrokenLineBlue}
+            className={classes.smallBrokenLineBlue}
           />
           <div className={classes.questionCards}>
             <div className={classes.card}>
@@ -268,14 +341,13 @@ const HomePage = () => {
             </div>
             <div className={classes.card}>
               <div className={classes.question}>
-                <div className={classes.triangle}></div>
+                <div className={classes.questionTriangle}></div>
                 <p className={classes.questionText}>
                   Some common question about service number one?
                 </p>
               </div>
               <div className={classes.answer}>
                 <div className={classes.answerTriangle}></div>
-
                 <p className={classes.answerText}>
                   Yes. Answer in some words and comment about answer. Answer in
                   some words and comment about answer.
@@ -284,20 +356,95 @@ const HomePage = () => {
             </div>
             <div className={classes.card}>
               <div className={classes.question}>
-                <div className={classes.triangle}></div>
+                <div className={classes.questionTriangle}></div>
                 <p className={classes.questionText}>
                   Some common question about service number one?
                 </p>
               </div>
               <div className={classes.answer}>
                 <div className={classes.answerTriangle}></div>
-
                 <p className={classes.answerText}>
                   Yes. Answer in some words and comment about answer. Answer in
                   some words and comment about answer.
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+        <div className={classes.birdWrapper}>
+          <img alt="bird" src={bird} className={classes.bird} />
+        </div>
+        <div className={classes.moreQuestions}>
+          <div className={classes.brokenLinesWrapper}>
+            <img
+              alt="broken-line"
+              src={brokenLine}
+              className={classes.brokenLine}
+            />
+            <img
+              alt="broken-line-blue"
+              src={brokenLineBlue}
+              className={classes.brokenLineBlue}
+            />
+          </div>
+          <div className={classes.textWrapper}>
+            <p className={classes.moreQuestionsTitle}>Have more questions?</p>
+            <Link to="/" className={classes.link}>
+              <p className={classes.linkText}>We have answers in FAQ</p>
+              <img
+                className={classes.linkImg}
+                alt="arrow-right"
+                src={arrowRight}
+              />
+            </Link>
+          </div>
+        </div>
+        <div className={classes.products}>
+          <div className={classes.productsHeader}>
+            <h6 className={classes.productsTitle}>Products</h6>
+            <div className={classes.controlesr}></div>
+          </div>
+          <div className={classes.divider} />
+          <div className={classes.productCards}>
+            <ProductCard
+              title="Audience Portrait & Size"
+              description="Product description">
+              Identify and monitor strategic targets size and profile for
+              business planning, focused in-market, retail and communication
+              strategies.
+            </ProductCard>
+            <ProductCard
+              title="Habits & Practices Exploratory"
+              description="Product description">
+              Identify and monitor strategic targets size and profile for
+              business planning, focused in-market, retail and communication
+              strategies.
+            </ProductCard>
+            <ProductCard
+              title="Price & Demand Sizing"
+              description="Product description">
+              Learn and monitor demand elasticity with price change, adapt your
+              strategies, engage with potential customers to equip your
+              innovation ideas with shelf price insight.
+            </ProductCard>
+            <ProductCard
+              title="Commercials & Ideas Early Testing"
+              description="Product description">
+              Develop data-backed campaigns, test early-stage creative concepts,
+              or support your ideas with consumer report during a pitch.
+            </ProductCard>
+            <ProductCard
+              title="Commercials & Ideas Early Testing"
+              description="Product description">
+              Develop data-backed campaigns, test early-stage creative concepts,
+              or support your ideas with consumer report during a pitch.
+            </ProductCard>
+            <ProductCard
+              title="Commercials & Ideas Early Testing"
+              description="Product description">
+              Develop data-backed campaigns, test early-stage creative concepts,
+              or support your ideas with consumer report during a pitch.
+            </ProductCard>
           </div>
         </div>
       </main>

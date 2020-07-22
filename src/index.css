@@ -25,3 +25,8 @@ body {
   font-family: 'Duster Regular';
   src: url('./fonts/Duster\ Thin.ttf');
 }
+
+@font-face {
+  font-family: 'Duster Bold';
+  src: url('./fonts/Duster\ Regular.ttf');
+}

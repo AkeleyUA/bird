@@ -12,7 +12,9 @@ const useStyles = makeStyles({
   },
   grid: {
     height: '100%',
-    marginLeft: 148,
+    maxWidth: 1190,
+    width: '95%',
+    margin: '0 auto',
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr) 2fr',
   },
@@ -54,11 +56,15 @@ const useStyles = makeStyles({
   divider: {
     height: 1,
     background: '#8C9DD0',
-    margin: '31px 143px 43px 143px',
+    margin: '31px auto 43px auto',
+    maxWidth: 1190,
+    width: '95%',
   },
   copyright: {
     display: 'block',
-    marginLeft: 143,
+    maxWidth: 1190,
+    width: '95%',
+    margin: '0 auto',
     fontFamily: ' PT Sans',
     fontSize: 16,
     letterSpacing: '0.02em',

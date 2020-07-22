@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
 import {makeStyles} from '@material-ui/styles';
 import {Link} from 'react-router-dom';
 import headerBG from '../images/header-bg.svg';
@@ -68,10 +69,14 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  row: {
+  benefits: {
+    width: '80%',
     display: 'flex',
     justifyContent: 'space-evenly',
+    flexWrap: 'wrap',
     marginTop: 140,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   benefitWrapper: {
     position: 'relative',
@@ -107,7 +112,7 @@ const useStyles = makeStyles({
     zIndex: 1,
   },
   plates: {
-    marginTop: 112,
+    marginTop: 12,
     display: 'flex',
     flexDirection: 'column',
   },
@@ -126,18 +131,27 @@ const useStyles = makeStyles({
   },
   questionCards: {
     width: '95%',
-    paddingTop: 83,
     display: 'flex',
     justifyContent: 'space-around',
-    transform: 'rotate(-5deg)',
+    minHeight: 421,
     margin: '0 auto',
+    flexWrap: 'wrap',
   },
   card: {
+    marginTop: 83,
     maxWidth: 375 + 50,
-    width: '60%',
+    width: '90%',
     display: 'flex',
     flexDirection: 'column',
-    transform: 'rotate(5deg)',
+    '&:nth-child(1)': {
+      alignSelf: 'flex-end',
+    },
+    '&:nth-child(2)': {
+      alignSelf: 'center',
+    },
+    '&:nth-child(3)': {
+      alignSelf: 'flex-start',
+    },
   },
   question: {
     padding: '22px 48px 28px 32px',
@@ -174,6 +188,7 @@ const useStyles = makeStyles({
     background: '#FFDC00',
     borderRadius: 4,
     alignSelf: 'flex-end',
+    position: 'relative',
   },
   answerTriangle: {
     content: '',
@@ -204,6 +219,7 @@ const useStyles = makeStyles({
     marginLeft: '23%',
     marginBottom: 143,
     display: 'flex',
+    flexWrap: 'wrap',
   },
   link: {
     display: 'flex',
@@ -338,11 +354,56 @@ const productsArray = [
     strategies.`,
     lineColors: ['#8C9DD0', '#FFDC00', '#53C8E1'],
   },
+  {
+    title: 'Audience Portrait & Size',
+    description: 'Product description',
+    text: `Identify and monitor strategic targets size and profile for
+    business planning, focused in-market, retail and communication
+    strategies.`,
+    lineColors: ['#8C9DD0', '#3E245C'],
+  },
+  {
+    title: 'Audience Portrait & Size',
+    description: 'Product description',
+    text: `Identify and monitor strategic targets size and profile for
+    business planning, focused in-market, retail and communication
+    strategies.`,
+    lineColors: ['#8C9DD0', '#FFDC00', '#53C8E1'],
+  },
+  {
+    title: 'Audience Portrait & Size',
+    description: 'Product description',
+    text: `Identify and monitor strategic targets size and profile for
+    business planning, focused in-market, retail and communication
+    strategies.`,
+    lineColors: ['#8C9DD0', '#3E245C'],
+  },
+  {
+    title: 'Audience Portrait & Size',
+    description: 'Product description',
+    text: `Identify and monitor strategic targets size and profile for
+    business planning, focused in-market, retail and communication
+    strategies.`,
+    lineColors: ['#8C9DD0', '#3E245C'],
+  },
+  {
+    title: 'Audience Portrait & Size',
+    description: 'Product description',
+    text: `Identify and monitor strategic targets size and profile for
+    business planning, focused in-market, retail and communication
+    strategies.`,
+    lineColors: ['#8C9DD0', '#3E245C'],
+  },
 ];
 
 const HomePage = () => {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const classes = useStyles();
+  const {pathname} = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const leftHandler = () => {
     setActiveItemIndex((prevState) => (prevState === 0 ? 0 : prevState - 1));
@@ -367,44 +428,40 @@ const HomePage = () => {
       </header>
       <main>
         <div className={classes.benefits}>
-          <div className={classes.row}>
-            <div className={classes.benefitWrapper}>
-              <img alt="duck" src={duck} className={classes.duck} />
-              <Benefit title="Time saving">
-                24-72 hours from study activation to report
-              </Benefit>
-            </div>
-            <div className={classes.benefitWrapper}>
-              <img alt="sun" src={sun} className={classes.sun} />
-              <Benefit title="Cost Effective​">
-                Starting from $1 per voice of respondent.
-              </Benefit>
-            </div>
-            <div className={classes.benefitWrapper}>
-              <img alt="round" src={round} className={classes.round} />
-              <Benefit title="Global Reach">
-                Opening new vistas for our Clients by looking at new markets,
-                searching new customers, understanding different audiences
-                worldwide.
-              </Benefit>
-            </div>
+          <div className={classes.benefitWrapper}>
+            <img alt="duck" src={duck} className={classes.duck} />
+            <Benefit title="Time saving">
+              24-72 hours from study activation to report
+            </Benefit>
           </div>
-          <div className={classes.row}>
-            <div className={classes.benefitWrapper}>
-              <img alt="sluck" src={sluck} className={classes.sluck} />
-              <Benefit title="From Complexity to Clarity">
-                Wise structure of forms and reports paired with user-friendly UI
-                provide smart and simple answers on complex questions.
-              </Benefit>
-            </div>
-            <div className={classes.benefitWrapper}>
-              <img alt="triangle" src={triangle} className={classes.triangle} />
-              <Benefit title="Reliability & Data Quality">
-                Our reports maintain “certified” status, as they are built on
-                world-class methods in data collection and analysis by industry
-                best research specialists.
-              </Benefit>
-            </div>
+          <div className={classes.benefitWrapper}>
+            <img alt="sun" src={sun} className={classes.sun} />
+            <Benefit title="Cost Effective​">
+              Starting from $1 per voice of respondent.
+            </Benefit>
+          </div>
+          <div className={classes.benefitWrapper}>
+            <img alt="round" src={round} className={classes.round} />
+            <Benefit title="Global Reach">
+              Opening new vistas for our Clients by looking at new markets,
+              searching new customers, understanding different audiences
+              worldwide.
+            </Benefit>
+          </div>
+          <div className={classes.benefitWrapper}>
+            <img alt="sluck" src={sluck} className={classes.sluck} />
+            <Benefit title="From Complexity to Clarity">
+              Wise structure of forms and reports paired with user-friendly UI
+              provide smart and simple answers on complex questions.
+            </Benefit>
+          </div>
+          <div className={classes.benefitWrapper}>
+            <img alt="triangle" src={triangle} className={classes.triangle} />
+            <Benefit title="Reliability & Data Quality">
+              Our reports maintain “certified” status, as they are built on
+              world-class methods in data collection and analysis by industry
+              best research specialists.
+            </Benefit>
           </div>
         </div>
         <div className={classes.plates}>
@@ -533,7 +590,7 @@ const HomePage = () => {
             />
           </div>
           <div className={classes.productFooter}>
-            <Link to="/" className={classes.link}>
+            <Link to="/Products" className={classes.link}>
               <p className={classes.linkText}>Check out our Products</p>
               <img alt="arrow-right" src={arrowRight} />
             </Link>

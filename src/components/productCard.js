@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     backgroundColor: '#F7F7F7',
     width: '90%',
     maxWidth: 310,
-    minHeight: 248,
+    maxHeight: 317,
   },
   header: {
     display: 'flex',
@@ -20,6 +20,11 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 12.5,
+  },
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: 270,
   },
   colorLine: {
     height: 8,
@@ -47,9 +52,23 @@ const useStyles = makeStyles({
     letterSpacing: '0.02em',
     color: '#222222',
   },
+  btn: {
+    width: 122,
+    height: 36,
+    background: '#FFDC00',
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.08)',
+    borderRadius: 8,
+    margin: 'auto auto 31px auto',
+    justifySelf: 'flex-end',
+    fontFamily: 'PT Sans',
+    fontWeight: 'bold',
+    fontSize: 13,
+    letterSpacing: '0.02em',
+    color: '#3E245C',
+  },
 });
 
-const ProductCard = ({title, children, description, colors}) => {
+const ProductCard = ({title, children, description, colors, btn}) => {
   const classes = useStyles();
   const [isLike, setIsLike] = useState(false);
   const likeHandler = () => {
@@ -110,10 +129,11 @@ const ProductCard = ({title, children, description, colors}) => {
           </svg>
         </div>
       </header>
-      <main>
+      <main className={classes.main}>
         <h6 className={classes.cardTitle}>{title}</h6>
         <p className={classes.description}>{description}</p>
         <p className={classes.text}>{children}</p>
+        {btn && <button className={classes.btn}>Start the Survey</button>}
       </main>
     </div>
   );

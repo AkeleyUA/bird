@@ -11,12 +11,17 @@ const useStyles = makeStyles({
   plate: {
     alignSelf: 'flex-end',
     marginTop: 67,
-    padding: '70px 61px 51px 118px',
-    maxWidth: 1034 - 61 - 118,
-    width: 'calc(75% - 61px - 118px)',
+    width: '80%',
+    padding: '75px 0 48px 0',
+    maxWidth: 1034,
     marginRight: '1.8%',
     background: '#8C9DD0',
     position: 'relative',
+  },
+  contentWrapper: {
+    maxWidth: 854,
+    width: '90%',
+    margin: '0 auto',
   },
   plateBorder: {
     position: 'absolute',
@@ -104,32 +109,40 @@ const BluePlate = () => {
   const classes = useStyles();
   return (
     <div className={classes.plate}>
-      <div className={classes.plateBorder}></div>
-      <img alt="round" src={round} className={classes.round} />
-      <img alt="round-blue" src={roundBlue} className={classes.roundBlue} />
-      <img alt="broken-line" src={brokenLine} className={classes.brokenLine} />
-      <img
-        alt="broken-line-blue"
-        src={brokenLineBlue}
-        className={classes.brokenLineBlue}
-      />
-      <h6 className={classes.title}>Downloadable Report & Survey Data </h6>
-      <div className={classes.divider} />
-      <div className={classes.textGroup}>
-        <p className={classes.benefitText}>with actionable business insights</p>
-        <div className={classes.descriptionGroup}>
-          <p className={classes.description}>
-            We excel in what we do. Our experts and know-how fuel
-            beyond-just-data actionable insights.
+      <div className={classes.contentWrapper}>
+        <div className={classes.plateBorder}></div>
+        <img alt="round" src={round} className={classes.round} />
+        <img alt="round-blue" src={roundBlue} className={classes.roundBlue} />
+        <img
+          alt="broken-line"
+          src={brokenLine}
+          className={classes.brokenLine}
+        />
+        <img
+          alt="broken-line-blue"
+          src={brokenLineBlue}
+          className={classes.brokenLineBlue}
+        />
+        <h6 className={classes.title}>Downloadable Report & Survey Data </h6>
+        <div className={classes.divider} />
+        <div className={classes.textGroup}>
+          <p className={classes.benefitText}>
+            with actionable business insights
           </p>
-          <Link to="/" className={classes.link}>
-            <p className={classes.linkText}>Explore Report Examples</p>
-            <img
-              className={classes.linkImg}
-              alt="arrow-right"
-              src={arrowRight}
-            />
-          </Link>
+          <div className={classes.descriptionGroup}>
+            <p className={classes.description}>
+              We excel in what we do. Our experts and know-how fuel
+              beyond-just-data actionable insights.
+            </p>
+            <Link to="/" className={classes.link}>
+              <p className={classes.linkText}>Explore Report Examples</p>
+              <img
+                className={classes.linkImg}
+                alt="arrow-right"
+                src={arrowRight}
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

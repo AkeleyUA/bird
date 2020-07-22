@@ -7,6 +7,7 @@ const useStyles = makeStyles({
     minHeight: 176,
     zIndex: 1300,
     position: 'relative',
+    marginBottom: 100,
   },
   title: {
     fontSize: 48,

@@ -13,10 +13,11 @@ const useStyles = makeStyles({
     background: '#F7F7F7',
     width: '100%',
     maxWidth: 1440,
-    height: 150,
+    minHeight: 150,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    flexWrap: 'wrap',
   },
   rightSide: {
     display: 'flex',
@@ -175,7 +176,7 @@ const NavBar = () => {
             alt="settings-icon"
           />
           <CoinBtn src={netWork}>My Reports</CoinBtn>
-          <CoinBtn src={plus}>New Survay</CoinBtn>
+          <CoinBtn src={plus}>New Survey</CoinBtn>
         </div>
         <div className={classes.user}>
           <CoinBtn src={user}>My Office</CoinBtn>

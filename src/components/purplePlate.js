@@ -8,13 +8,18 @@ import {Link} from 'react-router-dom';
 const useStyles = makeStyles({
   plate: {
     marginTop: 58,
-    padding: '75px 61px 48px 118px',
-    maxWidth: 1034 - 61 - 118,
-    width: 'calc(75% - 61px - 118px)',
+    width: '80%',
+    padding: '75px 0 48px 0',
+    maxWidth: 1034,
     marginLeft: '1.8%',
     background: '#3E245C',
     position: 'relative',
     marginBottom: 137,
+  },
+  contentWrapper: {
+    maxWidth: 854,
+    width: '90%',
+    margin: '0 auto',
   },
   plateBorder: {
     position: 'absolute',
@@ -93,33 +98,32 @@ const YellowPlate = () => {
   const classes = useStyles();
   return (
     <div className={classes.plate}>
-      <div className={classes.plateBorder}></div>
+      <div className={classes.contentWrapper}>
+        <div className={classes.plateBorder}></div>
 
-      <img alt="dots-grid" src={dotsGrid} className={classes.dotsGrid} />
-      <img
-        alt="double-cross"
-        src={doubleCross}
-        className={classes.doubleCross}
-      />
-      {/* <img alt="lobule" src={lobule} className={classes.lobule} />
-      <img alt="rain" src={rain} className={classes.rain} />
-      <img alt="lobule-blue" src={lobuleBlue} className={classes.lobuleBlue} /> */}
-      <h6 className={classes.title}>About the workflow</h6>
-      <div className={classes.divider} />
-      <div className={classes.textGroup}>
-        <p className={classes.benefitText}>How to get started</p>
-        <div className={classes.descriptionGroup}>
-          <p className={classes.description}>
-            Seamless user-friendly system to explore customers and societies.
-          </p>
-          <Link to="/" className={classes.link}>
-            <p className={classes.linkText}>How it Works?</p>
-            <img
-              className={classes.linkImg}
-              alt="arrow-right"
-              src={arrowRight}
-            />
-          </Link>
+        <img alt="dots-grid" src={dotsGrid} className={classes.dotsGrid} />
+        <img
+          alt="double-cross"
+          src={doubleCross}
+          className={classes.doubleCross}
+        />
+        <h6 className={classes.title}>About the workflow</h6>
+        <div className={classes.divider} />
+        <div className={classes.textGroup}>
+          <p className={classes.benefitText}>How to get started</p>
+          <div className={classes.descriptionGroup}>
+            <p className={classes.description}>
+              Seamless user-friendly system to explore customers and societies.
+            </p>
+            <Link to="/" className={classes.link}>
+              <p className={classes.linkText}>How it Works?</p>
+              <img
+                className={classes.linkImg}
+                alt="arrow-right"
+                src={arrowRight}
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

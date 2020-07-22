@@ -8,6 +8,10 @@
 body {
   max-width: 1440px;
   margin: 0 auto;
+  position: relative;
+}
+html,
+body {
   overflow-x: hidden;
 }
 

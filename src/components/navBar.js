@@ -134,44 +134,39 @@ const useStyles = makeStyles({
   },
 });
 
-const Links = () => {
+const links = [
+  {
+    name: 'Pricing',
+    path: '/pricing',
+  },
+  {
+    name: 'How it works?',
+    path: '/how-it-works',
+  },
+  {
+    name: 'Products',
+    path: '/products',
+  },
+  {
+    name: 'Industry Solutions',
+    path: '/industry-solutions',
+  },
+];
+
+const Links = ({onClick}) => {
   const classes = useStyles();
-  return (
-    <>
-      <NavLink
-        className={classes.link}
-        to="/Pricing"
-        exact
-        activeClassName={classes.active}>
-        <div />
-        Pricing
-      </NavLink>
-      <NavLink
-        exact
-        className={classes.link}
-        to="/How it works?"
-        activeClassName={classes.active}>
-        <div className={classes.round} />
-        How it works?
-      </NavLink>
-      <NavLink
-        exact
-        className={classes.link}
-        to="/Products"
-        activeClassName={classes.active}>
-        <div className={classes.round} />
-        Products
-      </NavLink>
-      <NavLink
-        exact
-        className={classes.link}
-        to="/Industry Solutions"
-        activeClassName={classes.active}>
-        <div className={classes.round} />
-        Industry Solutions
-      </NavLink>
-    </>
-  );
+  return links.map(({path, name}) => (
+    <NavLink
+      key={path}
+      onClick={onClick}
+      className={classes.link}
+      to={path}
+      exact
+      activeClassName={classes.active}>
+      <div className={classes.round} />
+      {name}
+    </NavLink>
+  ));
 };
 const NavBar = () => {
   const classes = useStyles();
@@ -202,8 +197,10 @@ const NavBar = () => {
           </div>
           <Drawer anchor="left" open={open} onClose={closeHandler}>
             <div className={classes.menu}>
-              <img src={logo} className={classes.logo} alt="logo" />
-              <Links />
+              <NavLink to="/" onClick={closeHandler}>
+                <img src={logo} className={classes.logo} alt="logo" />
+              </NavLink>
+              <Links onClick={closeHandler} />
             </div>
           </Drawer>
         </Hidden>

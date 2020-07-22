@@ -4,11 +4,13 @@ import bigCoin from '../images/big-coin.svg';
 
 const useStyles = makeStyles({
   container: {
-    width: 445 - 37,
-    minWidth: 300 - 37,
+    maxWidth: 445,
+    width: '95%',
+    height: 183,
     background: '#F7F7F7',
-    padding: '37px 0 37px 37px',
     display: 'flex',
+    justifyContent: 'fex-end',
+    alignItems: 'center',
     marginTop: 30,
   },
   bigCoin: {

@@ -5,10 +5,15 @@ import {makeStyles} from '@material-ui/styles';
 import mediumBrokenLine from '../images/medium-broken-line.svg';
 import Categories from '../components/categories';
 import ProductCard from '../components/productCard';
+import {Grid, Hidden} from '@material-ui/core';
 
 const useStyles = makeStyles({
   container: {
     padding: '32px 0',
+  },
+  productsContainer: {
+    width: '90%',
+    margin: '0 auto',
   },
   bannerGroup: {
     display: 'flex',
@@ -22,30 +27,32 @@ const useStyles = makeStyles({
     bottom: -10,
   },
   bigBanner: {
+    width: '95%',
     maxWidth: 1154,
-    width: '80.1%',
-    height: 213,
+    minHeight: 213,
     background: '#FFDC00',
     margin: '0 auto',
-    display: 'flex',
     alignItems: 'center',
     marginTop: 30,
     marginBottom: 67,
+    padding: '15px 0',
   },
   bigBannerTitle: {
-    display: 'block',
-    maxWidth: 330,
-    width: '28.6%',
+    textAlign: 'center',
     fontFamily: 'Duster Regular',
     fontSize: 48,
     color: '#3E245C',
-    marginLeft: '3.5%',
   },
   verticalDivider: {
     width: 1,
     height: 119,
     background: '#FFF',
-    marginLeft: '5.8%',
+  },
+  horizontalDivider: {
+    width: '50%',
+    height: 1,
+    background: '#FFF',
+    margin: '15px 0',
   },
   bigBannerDescription: {
     maxWidth: 560,
@@ -53,8 +60,6 @@ const useStyles = makeStyles({
     fontSize: 20,
     letterSpacing: '0.02em',
     color: '#3E245C',
-    marginLeft: '2.7%',
-    marginRight: '2.7%',
   },
   mainTitle: {
     display: 'block',
@@ -66,17 +71,11 @@ const useStyles = makeStyles({
     fontSize: 24,
     color: '#000',
   },
-  main: {
+  center: {
     display: 'flex',
+    justifyContent: 'center',
   },
-  products: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    marginTop: -15,
-  },
-  productWrapper: {
-    margin: 15,
-  },
+  productWrapper: {},
 });
 
 const productsArray = [
@@ -184,34 +183,55 @@ const ProductsPage = () => {
           alt="medium-broken-line"
         />
       </div>
-      <div className={classes.bigBanner}>
-        <h6 className={classes.bigBannerTitle}>Pruduct Solutions</h6>
-        <div className={classes.verticalDivider} />
-        <p className={classes.bigBannerDescription}>
-          We did some job for you, creating redy to go survey templates
-          depending on industry. So you just need to choose one. You may also
-          update any template and save it for future tasks!
-        </p>
-      </div>
+      <Grid container className={classes.bigBanner} justify="center">
+        <Grid item lg={4} md={4} sm={4} xs={11}>
+          <h6 className={classes.bigBannerTitle}>Pruduct Solutions</h6>
+        </Grid>
+        <Hidden only="xs">
+          <Grid item lg={1} md={1} sm={1} xs={11} className={classes.center}>
+            <div className={classes.verticalDivider} />
+          </Grid>
+        </Hidden>
+        <Hidden smUp>
+          <Grid item lg={1} md={1} sm={1} xs={11} className={classes.center}>
+            <div className={classes.horizontalDivider} />
+          </Grid>
+        </Hidden>
+        <Grid item lg={7} md={7} sm={7} xs={11}>
+          <p className={classes.bigBannerDescription}>
+            We did some job for you, creating redy to go survey templates
+            depending on industry. So you just need to choose one. You may also
+            update any template and save it for future tasks!
+          </p>
+        </Grid>
+      </Grid>
       <h6 className={classes.mainTitle}>Business Challenges</h6>
-      <div className={classes.main}>
-        <Categories />
-        <div className={classes.products}>
-          {productsArray.map(
-            ({title, description, text, lineColors}, index) => (
-              <div key={title + index} className={classes.productWrapper}>
-                <ProductCard
-                  title={title}
-                  description={description}
-                  btn
-                  colors={lineColors}>
-                  {text}
-                </ProductCard>
-              </div>
-            ),
-          )}
-        </div>
-      </div>
+      <Grid container className={classes.productsContainer}>
+        <Grid item lg={3} xs={12}>
+          <Categories />
+        </Grid>
+        <Grid item lg={9}>
+          <Grid container spacing={3} justify="space-evenly">
+            {productsArray.map(
+              ({title, description, text, lineColors}, index) => (
+                <Grid
+                  item
+                  lg={4}
+                  key={title + index}
+                  className={classes.productWrapper}>
+                  <ProductCard
+                    title={title}
+                    description={description}
+                    btn
+                    colors={lineColors}>
+                    {text}
+                  </ProductCard>
+                </Grid>
+              ),
+            )}
+          </Grid>
+        </Grid>
+      </Grid>
     </div>
   );
 };

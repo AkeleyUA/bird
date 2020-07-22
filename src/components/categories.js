@@ -15,7 +15,6 @@ const categories = [
 
 const useStyles = makeStyles({
   container: {
-    width: 260,
     flex: 'none',
   },
   categoryBtn: {

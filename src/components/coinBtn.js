@@ -1,6 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/styles';
 import coin from '../images/coin.svg';
+import Icon from '@material-ui/core/Icon';
 
 const useStyles = makeStyles({
   coinBtn: {
@@ -18,6 +19,9 @@ const useStyles = makeStyles({
     width: 46,
     height: 46,
     background: `url(${coin})`,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   coinBtnTitle: {
     fontFamily: 'PT Sans, sans-serif',
@@ -28,20 +32,17 @@ const useStyles = makeStyles({
     marginTop: 5,
   },
   icon: {
-    position: 'absolute',
-    left: '33%',
-    right: '24.93%',
-    top: '33%',
-    bottom: '53.33%',
+    color: '#8C9DD0',
   },
 });
 
-const CoinBtn = ({src, children}) => {
+const CoinBtn = ({src, children, icon}) => {
   const classes = useStyles();
   return (
     <button className={classes.coinBtn}>
       <div className={classes.coin}>
-        <img src={src} className={classes.icon} alt="coin-icon" />
+        {src && <img src={src} alt="coin-icon" />}
+        {icon && <Icon className={classes.icon}>{icon}</Icon>}
       </div>
       <p className={classes.coinBtnTitle}>{children}</p>
     </button>

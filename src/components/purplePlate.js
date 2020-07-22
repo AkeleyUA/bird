@@ -4,17 +4,15 @@ import dotsGrid from '../images/dots-grid.svg';
 import doubleCross from '../images/double-cross.svg';
 import arrowRight from '../images/arrow-right-grey.svg';
 import {Link} from 'react-router-dom';
+import {Grid, Hidden} from '@material-ui/core';
 
 const useStyles = makeStyles({
   plate: {
     marginTop: 58,
-    width: '80%',
     padding: '75px 0 48px 0',
-    maxWidth: 1034,
     marginLeft: '1.8%',
     background: '#3E245C',
     position: 'relative',
-    marginBottom: 137,
   },
   contentWrapper: {
     maxWidth: 854,
@@ -33,12 +31,12 @@ const useStyles = makeStyles({
   dotsGrid: {
     position: 'absolute',
     top: -25,
-    right: '-23.7%',
+    right: -244,
   },
   doubleCross: {
     position: 'absolute',
     top: 258,
-    right: '-6.3%',
+    right: -74,
   },
   title: {
     fontSize: 48,
@@ -97,36 +95,40 @@ const useStyles = makeStyles({
 const YellowPlate = () => {
   const classes = useStyles();
   return (
-    <div className={classes.plate}>
-      <div className={classes.contentWrapper}>
-        <div className={classes.plateBorder}></div>
-
-        <img alt="dots-grid" src={dotsGrid} className={classes.dotsGrid} />
-        <img
-          alt="double-cross"
-          src={doubleCross}
-          className={classes.doubleCross}
-        />
-        <h6 className={classes.title}>About the workflow</h6>
-        <div className={classes.divider} />
-        <div className={classes.textGroup}>
-          <p className={classes.benefitText}>How to get started</p>
-          <div className={classes.descriptionGroup}>
-            <p className={classes.description}>
-              Seamless user-friendly system to explore customers and societies.
-            </p>
-            <Link to="/" className={classes.link}>
-              <p className={classes.linkText}>How it Works?</p>
-              <img
-                className={classes.linkImg}
-                alt="arrow-right"
-                src={arrowRight}
-              />
-            </Link>
+    <Grid container>
+      <Grid item lg={9} md={8} xs={11} className={classes.plate}>
+        <div className={classes.contentWrapper}>
+          <div className={classes.plateBorder}></div>
+          <Hidden smDown>
+            <img alt="dots-grid" src={dotsGrid} className={classes.dotsGrid} />
+            <img
+              alt="double-cross"
+              src={doubleCross}
+              className={classes.doubleCross}
+            />
+          </Hidden>
+          <h6 className={classes.title}>About the workflow</h6>
+          <div className={classes.divider} />
+          <div className={classes.textGroup}>
+            <p className={classes.benefitText}>How to get started</p>
+            <div className={classes.descriptionGroup}>
+              <p className={classes.description}>
+                Seamless user-friendly system to explore customers and
+                societies.
+              </p>
+              <Link to="/" className={classes.link}>
+                <p className={classes.linkText}>How it Works?</p>
+                <img
+                  className={classes.linkImg}
+                  alt="arrow-right"
+                  src={arrowRight}
+                />
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 

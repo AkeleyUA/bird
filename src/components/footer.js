@@ -1,6 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/styles';
 import {Link} from 'react-router-dom';
+import {Hidden, Grid} from '@material-ui/core';
 
 const useStyles = makeStyles({
   container: {
@@ -9,14 +10,12 @@ const useStyles = makeStyles({
     background: '#3E245C',
     paddingTop: 62,
     minHeight: 474 - 62,
+    paddingBottom: 40,
   },
-  grid: {
-    height: '100%',
+  root: {
     maxWidth: 1190,
-    width: '95%',
     margin: '0 auto',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr) 2fr',
+    width: '95%',
   },
   list: {
     display: 'flex',
@@ -76,92 +75,102 @@ const Footer = () => {
   const classes = useStyles();
   return (
     <footer className={classes.container}>
-      <div className={classes.grid}>
-        <div className={classes.list}>
-          <h6 className={classes.title}>Company</h6>
-          <Link to="/" className={classes.link}>
-            Contact
-          </Link>
-          <Link to="/" className={classes.link}>
-            Resources​
-          </Link>
-          <Link to="/" className={classes.link}>
-            Help
-          </Link>
-          <Link to="/" className={classes.link}>
-            Center​
-          </Link>
-          <Link to="/" className={classes.link}>
-            About​
-          </Link>
-          <Link to="/" className={classes.link}>
-            Careers​
-          </Link>
-          <Link to="/" className={classes.link}>
-            Blog​
-          </Link>
-        </div>
-        <div className={classes.list}>
-          <h6 className={classes.title}>How it Works​</h6>
-          <Link to="/" className={classes.link}>
-            Audience​​
-          </Link>
-          <Link to="/" className={classes.link}>
-            Business
-          </Link>
-          <Link to="/" className={classes.link}>
-            Questions​​
-          </Link>
-          <Link to="/" className={classes.link}>
-            Questionnaire​
-          </Link>
-          <Link to="/" className={classes.link}>
-            Results​
-          </Link>
-        </div>
-        <div className={classes.productsList}>
-          <h6 className={classes.title}>Products</h6>
-          <Link to="/" className={classes.link}>
-            Product 1
-          </Link>
-          <Link to="/" className={classes.link}>
-            Product name long
-          </Link>
-          <Link to="/" className={classes.link}>
-            Product 3​​
-          </Link>
-          <Link to="/" className={classes.link}>
-            Product name
-          </Link>
-          <Link to="/" className={classes.link}>
-            Product 5​​
-          </Link>
-          <Link to="/" className={classes.link}>
-            Name of the product in two lines
-          </Link>
-          <Link to="/" className={classes.link}>
-            Product 7​​
-          </Link>
-        </div>
-        <div className={classes.productsList}>
-          <h6 className={classes.title}> </h6>
-          <Link to="/" className={classes.link}>
-            Product 1
-          </Link>
-          <Link to="/" className={classes.link}>
-            Another product name
-          </Link>
-          <Link to="/" className={classes.link}>
-            Product 3​​
-          </Link>
-          <Link to="/" className={classes.link}>
-            Named product
-          </Link>
-          <Link to="/" className={classes.link}>
-            Product 5​​
-          </Link>
-        </div>
-        <div className={classes.list}>
+      <Grid container justify="center" className={classes.root}>
+        <Hidden only="xs">
+          <Grid item lg={2} sm={4} className={classes.list}>
+            <h6 className={classes.title}>Company</h6>
+            <Link to="/" className={classes.link}>
+              Contact
+            </Link>
+            <Link to="/" className={classes.link}>
+              Resources​
+            </Link>
+            <Link to="/" className={classes.link}>
+              Help
+            </Link>
+            <Link to="/" className={classes.link}>
+              Center​
+            </Link>
+            <Link to="/" className={classes.link}>
+              About​
+            </Link>
+            <Link to="/" className={classes.link}>
+              Careers​
+            </Link>
+            <Link to="/" className={classes.link}>
+              Blog​
+            </Link>
+          </Grid>
+        </Hidden>
+        <Hidden smDown>
+          <Grid item lg={2} md={4} className={classes.list}>
+            <h6 className={classes.title}>How it Works​</h6>
+            <Link to="/" className={classes.link}>
+              Audience​​
+            </Link>
+            <Link to="/" className={classes.link}>
+              Business
+            </Link>
+            <Link to="/" className={classes.link}>
+              Questions​​
+            </Link>
+            <Link to="/" className={classes.link}>
+              Questionnaire​
+            </Link>
+            <Link to="/" className={classes.link}>
+              Results​
+            </Link>
+          </Grid>
+        </Hidden>
+        <Hidden mdDown>
+          <Grid item lg={4}>
+            <Grid container justify="space-around">
+              <Grid item lg={6} className={classes.productsList}>
+                <h6 className={classes.title}>Products</h6>
+                <Link to="/" className={classes.link}>
+                  Product 1
+                </Link>
+                <Link to="/" className={classes.link}>
+                  Product name long
+                </Link>
+                <Link to="/" className={classes.link}>
+                  Product 3​​
+                </Link>
+                <Link to="/" className={classes.link}>
+                  Product name
+                </Link>
+                <Link to="/" className={classes.link}>
+                  Product 5​​
+                </Link>
+                <Link to="/" className={classes.link}>
+                  Name of the product in two lines
+                </Link>
+                <Link to="/" className={classes.link}>
+                  Product 7​​
+                </Link>
+              </Grid>
+              <Grid item lg={6} className={classes.productsList}>
+                <h6 className={classes.title}> </h6>
+                <Link to="/" className={classes.link}>
+                  Product 1
+                </Link>
+                <Link to="/" className={classes.link}>
+                  Another product name
+                </Link>
+                <Link to="/" className={classes.link}>
+                  Product 3​​
+                </Link>
+                <Link to="/" className={classes.link}>
+                  Named product
+                </Link>
+                <Link to="/" className={classes.link}>
+                  Product 5​​
+                </Link>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Hidden>
+        <Grid item lg={2} md={4} sm={6} xs={8} className={classes.list}>
           <Link to="/" className={classes.titleListItem}>
             Clients
           </Link>
@@ -180,8 +189,8 @@ const Footer = () => {
           <Link to="/" className={classes.titleListItem}>
             Sample Size calculator
           </Link>
-        </div>
-      </div>
+        </Grid>
+      </Grid>
       <div className={classes.divider} />
       <p className={classes.copyright}>Copyrights line</p>
     </footer>

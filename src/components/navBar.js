@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import {makeStyles} from '@material-ui/styles';
 import logo from '../images/logo.svg';
@@ -7,17 +7,17 @@ import netWork from '../images/network.svg';
 import plus from '../images/plus.svg';
 import user from '../images/user.svg';
 import CoinBtn from './coinBtn';
+import {Hidden, Drawer} from '@material-ui/core';
 
 const useStyles = makeStyles({
   navContainer: {
     background: '#F7F7F7',
     width: '100%',
     maxWidth: 1440,
-    minHeight: 150,
+    padding: '30px 0',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    flexWrap: 'wrap',
   },
   rightSide: {
     display: 'flex',
@@ -74,7 +74,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-    minWidth: 250,
+    minWidth: 200,
   },
   quickAcsess: {
     position: 'absolute',
@@ -118,66 +118,111 @@ const useStyles = makeStyles({
   },
   user: {
     marginLeft: 50,
-    marginRight: 93,
+    marginRight: 50,
+  },
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: 'auto',
+  },
+  menuBtnWrapper: {
+    marginLeft: 50,
+  },
+  menu: {
+    padding: 15,
   },
 });
 
+const Links = () => {
+  const classes = useStyles();
+  return (
+    <>
+      <NavLink
+        className={classes.link}
+        to="/Pricing"
+        exact
+        activeClassName={classes.active}>
+        <div />
+        Pricing
+      </NavLink>
+      <NavLink
+        exact
+        className={classes.link}
+        to="/How it works?"
+        activeClassName={classes.active}>
+        <div className={classes.round} />
+        How it works?
+      </NavLink>
+      <NavLink
+        exact
+        className={classes.link}
+        to="/Products"
+        activeClassName={classes.active}>
+        <div className={classes.round} />
+        Products
+      </NavLink>
+      <NavLink
+        exact
+        className={classes.link}
+        to="/Industry Solutions"
+        activeClassName={classes.active}>
+        <div className={classes.round} />
+        Industry Solutions
+      </NavLink>
+    </>
+  );
+};
 const NavBar = () => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+
+  const closeHandler = () => {
+    setOpen(false);
+  };
+
+  const openHandler = () => {
+    setOpen(true);
+  };
+
   return (
     <nav className={classes.navContainer}>
       <div className={classes.leftSide}>
-        <NavLink to="/">
-          <img src={logo} className={classes.logo} alt="logo" />
-        </NavLink>
-        <div className={classes.linksContainer}>
-          <NavLink
-            className={classes.link}
-            to="/Pricing"
-            exact
-            activeClassName={classes.active}>
-            <div />
-            Pricing
+        <Hidden smDown>
+          <NavLink to="/">
+            <img src={logo} className={classes.logo} alt="logo" />
           </NavLink>
-          <NavLink
-            exact
-            className={classes.link}
-            to="/How it works?"
-            activeClassName={classes.active}>
-            <div className={classes.round} />
-            How it works?
-          </NavLink>
-          <NavLink
-            exact
-            className={classes.link}
-            to="/Products"
-            activeClassName={classes.active}>
-            <div className={classes.round} />
-            Products
-          </NavLink>
-          <NavLink
-            exact
-            className={classes.link}
-            to="/Industry Solutions"
-            activeClassName={classes.active}>
-            <div className={classes.round} />
-            Industry Solutions
-          </NavLink>
-        </div>
+          <div className={classes.linksContainer}>
+            <Links />
+          </div>
+        </Hidden>
+        <Hidden mdUp>
+          <div className={classes.menuBtnWrapper} onClick={openHandler}>
+            <CoinBtn icon="menu">Menu</CoinBtn>
+          </div>
+          <Drawer anchor="left" open={open} onClose={closeHandler}>
+            <div className={classes.menu}>
+              <img src={logo} className={classes.logo} alt="logo" />
+              <Links />
+            </div>
+          </Drawer>
+        </Hidden>
       </div>
       <div className={classes.rightSide}>
-        <div className={classes.quickAcsessContainer}>
-          <div className={classes.quickAcsess} />
-          <p className={classes.quickAcsessTitle}>Quick acsess</p>
-          <div className={classes.elipse} />
-          <img
-            src={settings}
-            className={classes.settingsIcon}
-            alt="settings-icon"
-          />
-          <CoinBtn src={netWork}>My Reports</CoinBtn>
-          <CoinBtn src={plus}>New Survey</CoinBtn>
-        </div>
+        <Hidden only="xs">
+          <div className={classes.quickAcsessContainer}>
+            <div className={classes.quickAcsess} />
+            <p className={classes.quickAcsessTitle}>Quick acsess</p>
+            <div className={classes.elipse} />
+            <img
+              src={settings}
+              className={classes.settingsIcon}
+              alt="settings-icon"
+            />
+            <CoinBtn src={netWork}>My Reports</CoinBtn>
+            <CoinBtn src={plus}>New Survey</CoinBtn>
+          </div>
+        </Hidden>
         <div className={classes.user}>
           <CoinBtn src={user}>My Office</CoinBtn>
         </div>

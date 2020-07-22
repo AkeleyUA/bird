@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import {makeStyles} from '@material-ui/styles';
 import {Link} from 'react-router-dom';
@@ -20,11 +20,9 @@ import bird from '../images/bird.svg';
 import brokenLine from '../images/long-broken-line.svg';
 import brokenLineBlue from '../images/long-broken-line-blue.svg';
 import arrowRight from '../images/arrow-right.svg';
-import triangleToLeft from '../images/triangle-to-left.svg';
-import soSmallBrokenLine from '../images/so-small-broken-line.svg';
-import triangleToRight from '../images/triangle-to-right.svg';
 import mediumBrokenLineBlue from '../images/medium-broken-line-blue.svg';
 import Carousel from '../components/carousel';
+import {Grid, Hidden} from '@material-ui/core';
 
 const useStyles = makeStyles({
   container: {
@@ -70,17 +68,13 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   benefits: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    flexWrap: 'wrap',
     marginTop: 140,
     marginLeft: 'auto',
     marginRight: 'auto',
   },
-  benefitWrapper: {
-    width: '33%',
-    position: 'relative',
+  benefitGridItem: {
+    display: 'flex',
+    justifyContent: 'center',
   },
   duck: {
     position: 'absolute',
@@ -113,6 +107,7 @@ const useStyles = makeStyles({
     zIndex: 1,
   },
   plates: {
+    maxWidth: 1440,
     marginTop: 12,
     display: 'flex',
     flexDirection: 'column',
@@ -135,6 +130,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-around',
     minHeight: 421,
+    height: 'calc(100% + 100px)',
     margin: '0 auto',
     flexWrap: 'wrap',
   },
@@ -208,19 +204,27 @@ const useStyles = makeStyles({
     letterSpacing: '0.02em',
     color: '#3E245C',
   },
-  birdWrapper: {
-    width: '100%',
-  },
   bird: {
     marginTop: 70,
-    marginLeft: '19.2%',
   },
   moreQuestions: {
     marginTop: -10,
-    marginLeft: '23%',
+    maxWidth: 1440,
+    width: '63%',
+    minWidth: 300,
+    margin: '0 auto',
     marginBottom: 143,
     display: 'flex',
+    justifyContent: 'flex-start',
     flexWrap: 'wrap',
+    alignItems: 'flex-end',
+    height: 200,
+  },
+  moreQuestionsImage: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    position: 'relative',
   },
   link: {
     display: 'flex',
@@ -238,11 +242,6 @@ const useStyles = makeStyles({
     color: '#3E245C',
     marginRight: 13,
   },
-  brokenLinesWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginRight: 28,
-  },
   moreQuestionsTitle: {
     fontFamily: 'PT Sans',
     fontSize: 20,
@@ -251,40 +250,6 @@ const useStyles = makeStyles({
   textWrapper: {
     display: 'flex',
     flexDirection: 'column',
-  },
-  products: {
-    width: '96%',
-    margin: '0 auto',
-  },
-  productsHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  controlers: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  productsTitle: {
-    marginBottom: 16,
-    fontFamily: 'Duster Regular',
-    fontSize: 48,
-    color: '#3E245C',
-  },
-  divider: {
-    width: '100%',
-    height: 2,
-    backgroundColor: '#8C9DD0',
-    marginBottom: 21,
-  },
-  productCards: {
-    marginBottom: 45,
-  },
-  controler: {
-    cursor: 'pointer',
-  },
-  productFooter: {
-    display: 'flex',
-    justifyContent: 'flex-end',
   },
   invitation: {
     maxWidth: 1139,
@@ -312,112 +277,22 @@ const useStyles = makeStyles({
     left: '20.58%',
     top: -10,
   },
+  questionImageGroup: {
+    width: '100%',
+    marginBottom: 30,
+    position: 'relative',
+    minHeight: 30,
+    marginTop: 137,
+  },
 });
 
-const productsArray = [
-  {
-    title: 'Audience Portrait & Size',
-    description: 'Product description',
-    text: `Identify and monitor strategic targets size and profile for
-    business planning, focused in-market, retail and communication
-    strategies.`,
-    lineColors: ['#8C9DD0', '#FFDC00', '#53C8E1'],
-  },
-  {
-    title: 'Audience Portrait & Size',
-    description: 'Product description',
-    text: `Identify and monitor strategic targets size and profile for
-    business planning, focused in-market, retail and communication
-    strategies.`,
-    lineColors: ['#8C9DD0', '#3E245C'],
-  },
-  {
-    title: 'Audience Portrait & Size',
-    description: 'Product description',
-    text: `Identify and monitor strategic targets size and profile for
-    business planning, focused in-market, retail and communication
-    strategies.`,
-    lineColors: ['#8C9DD0', '#FFDC00'],
-  },
-  {
-    title: 'Audience Portrait & Size',
-    description: 'Product description',
-    text: `Identify and monitor strategic targets size and profile for
-    business planning, focused in-market, retail and communication
-    strategies.`,
-    lineColors: ['#8C9DD0', '#3E245C'],
-  },
-  {
-    title: 'Audience Portrait & Size',
-    description: 'Product description',
-    text: `Identify and monitor strategic targets size and profile for
-    business planning, focused in-market, retail and communication
-    strategies.`,
-    lineColors: ['#8C9DD0', '#FFDC00', '#53C8E1'],
-  },
-  {
-    title: 'Audience Portrait & Size',
-    description: 'Product description',
-    text: `Identify and monitor strategic targets size and profile for
-    business planning, focused in-market, retail and communication
-    strategies.`,
-    lineColors: ['#8C9DD0', '#3E245C'],
-  },
-  {
-    title: 'Audience Portrait & Size',
-    description: 'Product description',
-    text: `Identify and monitor strategic targets size and profile for
-    business planning, focused in-market, retail and communication
-    strategies.`,
-    lineColors: ['#8C9DD0', '#FFDC00', '#53C8E1'],
-  },
-  {
-    title: 'Audience Portrait & Size',
-    description: 'Product description',
-    text: `Identify and monitor strategic targets size and profile for
-    business planning, focused in-market, retail and communication
-    strategies.`,
-    lineColors: ['#8C9DD0', '#3E245C'],
-  },
-  {
-    title: 'Audience Portrait & Size',
-    description: 'Product description',
-    text: `Identify and monitor strategic targets size and profile for
-    business planning, focused in-market, retail and communication
-    strategies.`,
-    lineColors: ['#8C9DD0', '#3E245C'],
-  },
-  {
-    title: 'Audience Portrait & Size',
-    description: 'Product description',
-    text: `Identify and monitor strategic targets size and profile for
-    business planning, focused in-market, retail and communication
-    strategies.`,
-    lineColors: ['#8C9DD0', '#3E245C'],
-  },
-];
-
 const HomePage = () => {
-  const [activeItemIndex, setActiveItemIndex] = useState(0);
   const classes = useStyles();
   const {pathname} = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
-  const leftHandler = () => {
-    setActiveItemIndex((prevState) => (prevState === 0 ? 0 : prevState - 1));
-  };
-
-  const rightHandler = () => {
-    console.log(activeItemIndex);
-    setActiveItemIndex((prevState) =>
-      prevState === productsArray.length - 4
-        ? productsArray.length - 4
-        : prevState + 1,
-    );
-  };
 
   return (
     <div className={classes.container}>
@@ -428,61 +303,106 @@ const HomePage = () => {
         <button className={classes.startBtn}>Start the Survey</button>
       </header>
       <main>
-        <div className={classes.benefits}>
-          <div className={classes.benefitWrapper}>
-            <img alt="duck" src={duck} className={classes.duck} />
-            <Benefit title="Time saving">
+        <Grid container justify="center" className={classes.benefits}>
+          <Grid
+            item
+            lg={4}
+            md={6}
+            sm={12}
+            xs={12}
+            className={classes.benefitGridItem}>
+            <Benefit
+              title="Time saving"
+              img={<img alt="duck" src={duck} className={classes.duck} />}>
               24-72 hours from study activation to report
             </Benefit>
-          </div>
-          <div className={classes.benefitWrapper}>
-            <img alt="sun" src={sun} className={classes.sun} />
-            <Benefit title="Cost Effective​">
+          </Grid>
+          <Grid
+            item
+            lg={4}
+            md={6}
+            sm={12}
+            xs={12}
+            className={classes.benefitGridItem}>
+            <Benefit
+              title="Cost Effective​"
+              img={<img alt="sun" src={sun} className={classes.sun} />}>
               Starting from $1 per voice of respondent.
             </Benefit>
-          </div>
-          <div className={classes.benefitWrapper}>
-            <img alt="round" src={round} className={classes.round} />
-            <Benefit title="Global Reach">
+          </Grid>
+          <Grid
+            item
+            lg={4}
+            md={6}
+            sm={12}
+            xs={12}
+            className={classes.benefitGridItem}>
+            <Benefit
+              title="Global Reach"
+              img={<img alt="round" src={round} className={classes.round} />}>
               Opening new vistas for our Clients by looking at new markets,
               searching new customers, understanding different audiences
               worldwide.
             </Benefit>
-          </div>
-          <div className={classes.benefitWrapper}>
-            <img alt="sluck" src={sluck} className={classes.sluck} />
-            <Benefit title="From Complexity to Clarity">
+          </Grid>
+          <Grid
+            item
+            lg={4}
+            md={6}
+            sm={12}
+            xs={12}
+            className={classes.benefitGridItem}>
+            <Benefit
+              title="From Complexity to Clarity"
+              img={<img alt="sluck" src={sluck} className={classes.sluck} />}>
               Wise structure of forms and reports paired with user-friendly UI
               provide smart and simple answers on complex questions.
             </Benefit>
-          </div>
-          <div className={classes.benefitWrapper}>
-            <img alt="triangle" src={triangle} className={classes.triangle} />
-            <Benefit title="Reliability & Data Quality">
+          </Grid>
+          <Grid
+            item
+            lg={4}
+            md={6}
+            sm={12}
+            xs={12}
+            className={classes.benefitGridItem}>
+            <Benefit
+              title="Reliability & Data Quality"
+              img={
+                <img
+                  alt="triangle"
+                  src={triangle}
+                  className={classes.triangle}
+                />
+              }>
               Our reports maintain “certified” status, as they are built on
               world-class methods in data collection and analysis by industry
               best research specialists.
             </Benefit>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
         <div className={classes.plates}>
           <YellowPlate />
           <BluePlate />
           <PurplePlate />
         </div>
         <div className={classes.questions}>
-          <QuestionsImage />
-          <ThinkImage />
-          <img
-            alt="broken-line"
-            src={smallBrokenLine}
-            className={classes.smallBrokenLine}
-          />
-          <img
-            alt="broken-line-blue"
-            src={smallBrokenLineBlue}
-            className={classes.smallBrokenLineBlue}
-          />
+          <Hidden xsDown>
+            <div className={classes.questionImageGroup}>
+              <QuestionsImage />
+              <ThinkImage />
+              <img
+                alt="broken-line"
+                src={smallBrokenLine}
+                className={classes.smallBrokenLine}
+              />
+              <img
+                alt="broken-line-blue"
+                src={smallBrokenLineBlue}
+                className={classes.smallBrokenLineBlue}
+              />
+            </div>
+          </Hidden>
           <div className={classes.questionCards}>
             <div className={classes.card}>
               <div className={classes.question}>
@@ -531,11 +451,9 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className={classes.birdWrapper}>
-          <img alt="bird" src={bird} className={classes.bird} />
-        </div>
         <div className={classes.moreQuestions}>
-          <div className={classes.brokenLinesWrapper}>
+          <div className={classes.moreQuestionsImage}>
+            <img alt="bird" src={bird} className={classes.bird} />
             <img
               alt="broken-line"
               src={brokenLine}
@@ -559,44 +477,7 @@ const HomePage = () => {
             </Link>
           </div>
         </div>
-        <div className={classes.products}>
-          <div className={classes.productsHeader}>
-            <h6 className={classes.productsTitle}>Products</h6>
-            <div className={classes.controlers}>
-              <img
-                alt="triangle-to-left"
-                src={triangleToLeft}
-                className={classes.controler}
-                onClick={leftHandler}
-              />
-              <img
-                alt="so-small-broken-line"
-                src={soSmallBrokenLine}
-                className={classes.soSmallBrokenLine}
-              />
-              <img
-                alt="triangle-to-right"
-                src={triangleToRight}
-                className={classes.controler}
-                onClick={rightHandler}
-              />
-            </div>
-          </div>
-          <div className={classes.divider} />
-          <div className={classes.productCards}>
-            <Carousel
-              index={activeItemIndex}
-              productsArray={productsArray}
-              requestToChangeActive={setActiveItemIndex}
-            />
-          </div>
-          <div className={classes.productFooter}>
-            <Link to="/Products" className={classes.link}>
-              <p className={classes.linkText}>Check out our Products</p>
-              <img alt="arrow-right" src={arrowRight} />
-            </Link>
-          </div>
-        </div>
+        <Carousel />
         <div className={classes.invitation}>
           <img
             className={classes.mediumBrokenLineBlue}

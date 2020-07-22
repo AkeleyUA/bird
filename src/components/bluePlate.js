@@ -6,14 +6,12 @@ import brokenLine from '../images/broken-line.svg';
 import brokenLineBlue from '../images/broken-line-blue.svg';
 import arrowRight from '../images/arrow-right.svg';
 import {Link} from 'react-router-dom';
+import {Grid, Hidden} from '@material-ui/core';
 
 const useStyles = makeStyles({
   plate: {
-    alignSelf: 'flex-end',
     marginTop: 67,
-    width: '80%',
     padding: '75px 0 48px 0',
-    maxWidth: 1034,
     marginRight: '1.8%',
     background: '#8C9DD0',
     position: 'relative',
@@ -35,22 +33,22 @@ const useStyles = makeStyles({
   round: {
     position: 'absolute',
     top: 101,
-    left: '-15.5%',
+    left: -159,
   },
   roundBlue: {
     position: 'absolute',
     top: 0,
-    left: '-25.9%',
+    left: -261,
   },
   brokenLine: {
     position: 'absolute',
     top: 73,
-    left: '-36.6%',
+    left: -378,
   },
   brokenLineBlue: {
     position: 'absolute',
     top: 103,
-    left: '-36.6%',
+    left: -375,
   },
   title: {
     fontSize: 48,
@@ -108,44 +106,52 @@ const useStyles = makeStyles({
 const BluePlate = () => {
   const classes = useStyles();
   return (
-    <div className={classes.plate}>
-      <div className={classes.contentWrapper}>
-        <div className={classes.plateBorder}></div>
-        <img alt="round" src={round} className={classes.round} />
-        <img alt="round-blue" src={roundBlue} className={classes.roundBlue} />
-        <img
-          alt="broken-line"
-          src={brokenLine}
-          className={classes.brokenLine}
-        />
-        <img
-          alt="broken-line-blue"
-          src={brokenLineBlue}
-          className={classes.brokenLineBlue}
-        />
-        <h6 className={classes.title}>Downloadable Report & Survey Data </h6>
-        <div className={classes.divider} />
-        <div className={classes.textGroup}>
-          <p className={classes.benefitText}>
-            with actionable business insights
-          </p>
-          <div className={classes.descriptionGroup}>
-            <p className={classes.description}>
-              We excel in what we do. Our experts and know-how fuel
-              beyond-just-data actionable insights.
+    <Grid container justify="flex-end">
+      <Grid item lg={9} md={8} xs={11} className={classes.plate}>
+        <div className={classes.contentWrapper}>
+          <div className={classes.plateBorder}></div>
+          <Hidden smDown>
+            <img alt="round" src={round} className={classes.round} />
+            <img
+              alt="round-blue"
+              src={roundBlue}
+              className={classes.roundBlue}
+            />
+            <img
+              alt="broken-line"
+              src={brokenLine}
+              className={classes.brokenLine}
+            />
+            <img
+              alt="broken-line-blue"
+              src={brokenLineBlue}
+              className={classes.brokenLineBlue}
+            />
+          </Hidden>
+          <h6 className={classes.title}>Downloadable Report & Survey Data </h6>
+          <div className={classes.divider} />
+          <div className={classes.textGroup}>
+            <p className={classes.benefitText}>
+              with actionable business insights
             </p>
-            <Link to="/" className={classes.link}>
-              <p className={classes.linkText}>Explore Report Examples</p>
-              <img
-                className={classes.linkImg}
-                alt="arrow-right"
-                src={arrowRight}
-              />
-            </Link>
+            <div className={classes.descriptionGroup}>
+              <p className={classes.description}>
+                We excel in what we do. Our experts and know-how fuel
+                beyond-just-data actionable insights.
+              </p>
+              <Link to="/" className={classes.link}>
+                <p className={classes.linkText}>Explore Report Examples</p>
+                <img
+                  className={classes.linkImg}
+                  alt="arrow-right"
+                  src={arrowRight}
+                />
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 

@@ -70,7 +70,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   benefits: {
-    width: '80%',
+    width: '100%',
     display: 'flex',
     justifyContent: 'space-evenly',
     flexWrap: 'wrap',
@@ -79,6 +79,7 @@ const useStyles = makeStyles({
     marginRight: 'auto',
   },
   benefitWrapper: {
+    width: '33%',
     position: 'relative',
   },
   duck: {

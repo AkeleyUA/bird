@@ -5,8 +5,7 @@ const useStyles = makeStyles({
   productCard: {
     padding: 18,
     backgroundColor: '#F7F7F7',
-    width: '90%',
-    maxWidth: 310,
+    width: 310,
     maxHeight: 317,
   },
   header: {

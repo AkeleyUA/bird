@@ -144,7 +144,7 @@ const useStyles = makeStyles({
 });
 
 const noOfItems = productsArray.length;
-const noOfCards = Math.floor(window.innerWidth / 320);
+const noOfCards = Math.floor(window.innerWidth / 350);
 const autoPlayDelay = 3000;
 const chevronWidth = 40;
 

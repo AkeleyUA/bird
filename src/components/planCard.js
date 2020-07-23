@@ -97,7 +97,7 @@ const useStyles = makeStyles({
     background: '#FFDC00',
   },
   bonusDescription: {
-    width: '60%',
+    width: '70%',
     fontFamily: 'PT Sans',
     fontSize: 16,
     letterSpacing: '0.02em',

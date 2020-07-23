@@ -207,10 +207,10 @@ const ProductsPage = () => {
       </Grid>
       <h6 className={classes.mainTitle}>Business Challenges</h6>
       <Grid container className={classes.productsContainer}>
-        <Grid item lg={3} xs={12}>
+        <Grid item lg={3} xs={11}>
           <Categories />
         </Grid>
-        <Grid item lg={9}>
+        <Grid item lg={9} xs={11}>
           <Grid container spacing={3} justify="space-evenly">
             {productsArray.map(
               ({title, description, text, lineColors}, index) => (

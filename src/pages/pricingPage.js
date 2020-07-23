@@ -15,6 +15,7 @@ import PlanCard from '../components/planCard';
 import coinWhiteBorder from '../images/coin-white-border.svg';
 import brokenLineThinYellow from '../images/broken-line-thin-yellow.svg';
 import brokenLineThinGrey from '../images/broken-line-thin-grey.svg';
+import YellowCross from '../components/yellowCross';
 
 const useStyles = makeStyles({
   container: {
@@ -429,10 +430,11 @@ const PricingPage = () => {
           />
           <p className={classes.infoText}>
             You can cancel your subscription at any time by downgrading to the
-            Basic plan.​
+            <b> Basic plan</b>.​
           </p>
         </Grid>
       </Grid>
+      <YellowCross />
     </div>
   );
 };

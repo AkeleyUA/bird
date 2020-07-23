@@ -12,11 +12,6 @@ const useStyles = makeStyles({
     minHeight: 474 - 62,
     paddingBottom: 40,
   },
-  root: {
-    maxWidth: 1190,
-    margin: '0 auto',
-    width: '95%',
-  },
   list: {
     display: 'flex',
     flexDirection: 'column',
@@ -56,13 +51,9 @@ const useStyles = makeStyles({
     height: 1,
     background: '#8C9DD0',
     margin: '31px auto 43px auto',
-    maxWidth: 1190,
-    width: '95%',
   },
   copyright: {
     display: 'block',
-    maxWidth: 1190,
-    width: '95%',
     margin: '0 auto',
     fontFamily: ' PT Sans',
     fontSize: 16,
@@ -77,7 +68,7 @@ const Footer = () => {
     <footer className={classes.container}>
       <Grid container justify="center" className={classes.root}>
         <Hidden only="xs">
-          <Grid item lg={2} sm={4} className={classes.list}>
+          <Grid item lg={2} sm={3} className={classes.list}>
             <h6 className={classes.title}>Company</h6>
             <Link to="/" className={classes.link}>
               Contact
@@ -102,8 +93,8 @@ const Footer = () => {
             </Link>
           </Grid>
         </Hidden>
-        <Hidden smDown>
-          <Grid item lg={2} md={4} className={classes.list}>
+        <Hidden only="xs">
+          <Grid item lg={2} md={4} sm={3} className={classes.list}>
             <h6 className={classes.title}>How it Works​</h6>
             <Link to="/" className={classes.link}>
               Audience​​
@@ -170,7 +161,7 @@ const Footer = () => {
             </Grid>
           </Grid>
         </Hidden>
-        <Grid item lg={2} md={4} sm={6} xs={8} className={classes.list}>
+        <Grid item lg={3} md={4} sm={5} xs={11} className={classes.list}>
           <Link to="/" className={classes.titleListItem}>
             Clients
           </Link>
@@ -190,9 +181,13 @@ const Footer = () => {
             Sample Size calculator
           </Link>
         </Grid>
+        <Grid item xs={11}>
+          <div className={classes.divider} />
+        </Grid>
+        <Grid item xs={11}>
+          <p className={classes.copyright}>Copyrights line</p>
+        </Grid>
       </Grid>
-      <div className={classes.divider} />
-      <p className={classes.copyright}>Copyrights line</p>
     </footer>
   );
 };

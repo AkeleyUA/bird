@@ -224,7 +224,7 @@ const Carousel = () => {
         </ItemsCarousel>
       </div>
       <div className={classes.productFooter}>
-        <Link to="/Products" className={classes.link}>
+        <Link to="/products" className={classes.link}>
           <p className={classes.linkText}>Check out our Products</p>
           <img alt="arrow-right" src={arrowRight} />
         </Link>

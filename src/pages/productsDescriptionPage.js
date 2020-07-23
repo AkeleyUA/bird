@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/styles';
-import {Breadcrumbs, Icon, Grid, Typography} from '@material-ui/core';
+import {Breadcrumbs, Icon, Grid, Typography, Hidden} from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import bigCoin from '../images/big-coin.svg';
 import ionMan from '../images/ion-man.svg';
 import ionWoman from '../images/ion-woman.svg';
 import pdfIcon from '../images/pdf-icon.svg';
+import chart1 from '../images/chart-1.png';
+import chart2 from '../images/chart-2.png';
+import chart3 from '../images/chart-3.png';
+import Invitation from '../components/invitation';
 
 const useStyles = makeStyles({
   breadcrumbs: {
@@ -80,10 +84,10 @@ const useStyles = makeStyles({
   },
   benefitsTitle: {
     fontFamily: 'Duster Regular',
+    fontWeight: 'bold',
     fontSize: 48,
     color: '#3E245C',
     marginTop: 29,
-    marginBottom: 10,
   },
   benefits: {
     marginBottom: 122,
@@ -91,7 +95,7 @@ const useStyles = makeStyles({
     paddingBottom: 68,
   },
   benefit: {
-    marginTop: 26,
+    marginTop: 36,
     display: 'flex',
     alignItems: 'center',
   },
@@ -100,6 +104,7 @@ const useStyles = makeStyles({
     fontSize: 32,
     color: '#3E245C',
     maxWidth: 350,
+    whiteSpace: 'pre-line',
   },
   benefitDescription: {
     fontFamily: 'PT Sans',
@@ -140,9 +145,8 @@ const useStyles = makeStyles({
     color: '#3E245C',
   },
   actionBtn: {
-    maxWidth: 149,
+    width: 149,
     minHeight: 36,
-    width: '100%',
     fontFamily: 'PT Sans',
     fontWeight: 'bold',
     fontSize: 13,
@@ -177,7 +181,27 @@ const useStyles = makeStyles({
     height: 126,
     width: 1,
     background: '#FFDC00',
-    marginRight: 15,
+  },
+  vericalCenterColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  resultsContainer: {
+    marginTop: 44,
+    marginBottom: 32,
+  },
+  resultTitile: {
+    fontFamily: 'Duster Regular',
+    fontSize: 32,
+    color: '#3E245C',
+  },
+  resultDescription: {
+    maxWidth: 442,
+    fontFamily: 'PT Sans',
+    fontSize: 16,
+    letterSpacing: '0.02em',
+    color: '#222222',
   },
 });
 
@@ -234,14 +258,16 @@ const ProductsDescriptionPage = () => {
           <Grid
             item
             sm={10}
-            xs={11}
+            xs={10}
             component={Typography}
             variant="h6"
             className={classes.benefitsTitle}>
             Benefits
           </Grid>
-          <Grid item md={5} sm={10} xs={11} className={classes.benefit}>
-            <img alt="big-coin" src={bigCoin} className={classes.coin} />
+          <Grid item md={5} sm={10} xs={10} className={classes.benefit}>
+            <Hidden only="xs">
+              <img alt="big-coin" src={bigCoin} className={classes.coin} />
+            </Hidden>
             <div className={classes.benefitTextBlock}>
               <h6 className={classes.benefitTitle}>Prioritize Investment</h6>
               <p className={classes.benefitDescription}>
@@ -250,8 +276,10 @@ const ProductsDescriptionPage = () => {
               </p>
             </div>
           </Grid>
-          <Grid item md={5} sm={10} xs={11} className={classes.benefit}>
-            <img alt="big-coin" src={bigCoin} className={classes.coin} />
+          <Grid item md={5} sm={10} xs={10} className={classes.benefit}>
+            <Hidden only="xs">
+              <img alt="big-coin" src={bigCoin} className={classes.coin} />
+            </Hidden>
             <div className={classes.benefitTextBlock}>
               <h6 className={classes.benefitTitle}>Proven Methodology</h6>
               <p className={classes.benefitDescription}>
@@ -260,8 +288,10 @@ const ProductsDescriptionPage = () => {
               </p>
             </div>
           </Grid>
-          <Grid item md={5} sm={10} xs={11} className={classes.benefit}>
-            <img alt="big-coin" src={bigCoin} className={classes.coin} />
+          <Grid item md={5} sm={10} xs={10} className={classes.benefit}>
+            <Hidden only="xs">
+              <img alt="big-coin" src={bigCoin} className={classes.coin} />
+            </Hidden>
             <div className={classes.benefitTextBlock}>
               <h6 className={classes.benefitTitle}>
                 Strategic Recommendations
@@ -272,8 +302,10 @@ const ProductsDescriptionPage = () => {
               </p>
             </div>
           </Grid>
-          <Grid item md={5} sm={10} xs={11} className={classes.benefit}>
-            <img alt="big-coin" src={bigCoin} className={classes.coin} />
+          <Grid item md={5} sm={10} xs={10} className={classes.benefit}>
+            <Hidden only="xs">
+              <img alt="big-coin" src={bigCoin} className={classes.coin} />
+            </Hidden>
             <div className={classes.benefitTextBlock}>
               <h6 className={classes.benefitTitle}>Proven Methodology</h6>
               <p className={classes.benefitDescription}>
@@ -284,31 +316,35 @@ const ProductsDescriptionPage = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item lg={5}>
+      <Grid item lg={5} md={5} sm={10} xs={11}>
         <h6 className={classes.benefitsTitle}>Audience</h6>
         <p className={classes.benefitDescription}>
           Text about audience and countries where product can be explore. Text
           about audience and countries where product can be explore.
         </p>
         <Grid container className={classes.actions}>
-          <Grid item lg={2}>
+          <Grid item sm={2} xs={3}>
             <div className={classes.icons}>
               <img src={ionMan} alt="man" />
               <img src={ionWoman} alt="woman" />
             </div>
-            <p className={classes.benefitDescription}>Male & Female</p>
+            <p
+              className={classes.benefitDescription}
+              style={{textAlign: 'center'}}>
+              Male & Female
+            </p>
           </Grid>
-          <Grid item lg={1} className={classes.dividerWrapper}>
+          <Grid item xs={1} className={classes.dividerWrapper}>
             <div className={classes.verticalDivider} />
           </Grid>
-          <Grid item lg={2}>
+          <Grid item sm={2} xs={3}>
             <h6 className={classes.actionTitle}>Age</h6>
             <p className={classes.benefitDescription}>16-50 years</p>
           </Grid>
-          <Grid item lg={1} className={classes.dividerWrapper}>
+          <Grid item xs={1} className={classes.dividerWrapper}>
             <div className={classes.verticalDivider} />
           </Grid>
-          <Grid item lg={3}>
+          <Grid item sm={3} xs={3}>
             <h6 className={classes.actionTitle}>Region</h6>
             <Link to="/" className={classes.actionLink}>
               List of Countries
@@ -316,20 +352,20 @@ const ProductsDescriptionPage = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item lg={1} />
-      <Grid item lg={4}>
+      <Grid item md={1} />
+      <Grid item lg={4} md={4} sm={10} xs={11}>
         <h6 className={classes.benefitsTitle}>Questionnaire</h6>
         <p className={classes.benefitDescription}>
           Text about qustions list and what you can push button to check them
           all. And also you can add your own up to three questions to that list.
         </p>
         <Grid container className={classes.actions}>
-          <Grid item lg={6}>
+          <Grid item sm={6} xs={7}>
             <button className={classes.actionBtn}>
               <Icon>format_list_numbered</Icon>Demo Survey
             </button>
           </Grid>
-          <Grid item lg={6} className={classes.flex}>
+          <Grid item sm={6} xs={5} className={classes.flex}>
             <Icon className={classes.yellowIcon}>add</Icon>
             <div className={classes.textBlock}>
               <h6 className={classes.textBlockTitle}>3 custom questions</h6>
@@ -338,24 +374,82 @@ const ProductsDescriptionPage = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item lg={10} className={classes.results}>
-        <h6 className={classes.benefitsTitle} style={{margin: '5px 15px 0 0'}}>
-          Results
-        </h6>
-        <div className={classes.verticalDividerYellow} />
-        <div style={{alignSelf: 'center'}}>
-          <p
-            className={classes.benefitDescription}
-            style={{maxWidth: 418, marginBottom: 31}}>
-            Text about benefits of result that client can get. Text about
-            benefits of result that client can get.
-          </p>
-          <button className={classes.actionBtn} style={{maxWidth: 173}}>
-            <img src={pdfIcon} alt="pdf-icon" />
-            Download Sample
-          </button>
-        </div>
+      <Grid item lg={10} xs={11} className={classes.results}>
+        <Grid container>
+          <Grid
+            item
+            component={Typography}
+            variant="h6"
+            className={classes.benefitsTitle}
+            lg={1}
+            md={2}
+            sm={3}
+            xs={12}>
+            Results
+          </Grid>
+          <Grid item xs={1} className={classes.center}>
+            <div className={classes.verticalDividerYellow} />
+          </Grid>
+          <Grid item md={9} sm={8} xs={11} style={{alignSelf: 'center'}}>
+            <p
+              className={classes.benefitDescription}
+              style={{maxWidth: 418, marginBottom: 31}}>
+              Text about benefits of result that client can get. Text about
+              benefits of result that client can get.
+            </p>
+            <button className={classes.actionBtn} style={{width: 173}}>
+              <img src={pdfIcon} alt="pdf-icon" />
+              Download Sample
+            </button>
+          </Grid>
+        </Grid>
       </Grid>
+      <Grid item lg={8} xs={11}>
+        <Grid
+          container
+          justify="center"
+          spacing={4}
+          className={classes.resultsContainer}>
+          <Grid item sm={6} xs={12} className={classes.vericalCenterColumn}>
+            <h6 className={classes.resultTitile}>Maximum Trial Potential</h6>
+            <p className={classes.resultDescription}>
+              Text with comments for this chart. Is this description for chart,
+              or something else usefull.
+            </p>
+          </Grid>
+          <Grid item sm={6} xs={12}>
+            <img src={chart1} width="100%" alt="chart-1" />
+          </Grid>
+          <Hidden only="xs">
+            <Grid item sm={6}>
+              <img src={chart2} width="100%" alt="chart-2" />
+            </Grid>
+          </Hidden>
+          <Grid item sm={6} className={classes.vericalCenterColumn}>
+            <h6 className={classes.resultTitile}>Maximum Trial Potential</h6>
+            <p className={classes.resultDescription}>
+              Text with comments for this chart. Is this description for chart,
+              or something else usefull.
+            </p>
+          </Grid>
+          <Hidden smUp>
+            <Grid item sm={6} xs={12}>
+              <img src={chart2} width="100%" alt="chart-2" />
+            </Grid>
+          </Hidden>
+          <Grid item sm={6} className={classes.vericalCenterColumn}>
+            <h6 className={classes.resultTitile}>Maximum Trial Potential</h6>
+            <p className={classes.resultDescription}>
+              Text with comments for this chart. Is this description for chart,
+              or something else usefull.
+            </p>
+          </Grid>
+          <Grid item sm={6}>
+            <img src={chart3} width="100%" alt="chart-3" />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Invitation />
     </Grid>
   );
 };

@@ -1,17 +1,6 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/styles';
-import myRecentIcon from '../images/my-recent-icon.svg';
-import mySelectedIcon from '../images/my-selected-icon.svg';
-
-const categories = [
-  {name: 'All'},
-  {name: 'My recent', img: myRecentIcon},
-  {name: 'My selected', img: mySelectedIcon},
-  {name: 'Retail Excellence', color: '#FFDC00'},
-  {name: 'Market Strategy', color: '#8C9DD0'},
-  {name: 'Product Development', color: '#3E245C'},
-  {name: 'Advertising', color: '#53C8E1'},
-];
+import {categoriesArray} from '../hadrCodeData/categories';
 
 const useStyles = makeStyles({
   container: {
@@ -74,7 +63,7 @@ const Categories = () => {
   };
   return (
     <div className={classes.container}>
-      {categories.map(({name, img, color}) => (
+      {categoriesArray.map(({name, img, color}) => (
         <button
           key={name}
           id={name}

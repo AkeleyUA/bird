@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import {makeStyles} from '@material-ui/styles';
 import logo from '../images/logo.svg';
 import settings from '../images/settings.svg';
@@ -216,7 +216,9 @@ const NavBar = () => {
               alt="settings-icon"
             />
             <CoinBtn src={netWork}>My Reports</CoinBtn>
-            <CoinBtn src={plus}>New Survey</CoinBtn>
+            <Link to="/new-survey" style={{textDecoration: 'none'}}>
+              <CoinBtn src={plus}>New Survey</CoinBtn>
+            </Link>
           </div>
         </Hidden>
         <div className={classes.user}>

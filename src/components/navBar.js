@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     background: '#F7F7F7',
     width: '100%',
     maxWidth: 1440,
-    padding: '30px 0',
+    padding: '10px 0',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -161,7 +161,6 @@ const Links = ({onClick}) => {
       onClick={onClick}
       className={classes.link}
       to={path}
-      exact
       activeClassName={classes.active}>
       <div className={classes.round} />
       {name}

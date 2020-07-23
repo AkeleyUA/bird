@@ -28,10 +28,7 @@ const useStyles = makeStyles({
   },
   pageTitile: {
     display: 'block',
-    marginTop: 75,
-    margin: '75px auto 42px auto',
-    maxWidth: 1440 - 144 * 2,
-    width: '95%',
+    margin: '75px auto 42px 10%',
     fontFamily: 'Duster Regular',
     fontSize: 72,
     color: '#3E245C',

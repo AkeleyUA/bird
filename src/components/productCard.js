@@ -6,9 +6,9 @@ const useStyles = makeStyles({
     padding: 18,
     backgroundColor: '#F7F7F7',
     maxWidth: 310,
-    width: '100%',
     maxHeight: 317,
     border: '2px solid #FFF',
+    margin: '0 auto',
   },
   header: {
     display: 'flex',

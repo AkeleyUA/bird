@@ -20,9 +20,9 @@ import bird from '../images/bird.svg';
 import brokenLine from '../images/long-broken-line.svg';
 import brokenLineBlue from '../images/long-broken-line-blue.svg';
 import arrowRight from '../images/arrow-right.svg';
-import mediumBrokenLineBlue from '../images/medium-broken-line-blue.svg';
 import Carousel from '../components/carousel';
 import {Grid, Hidden} from '@material-ui/core';
+import Invitation from '../components/invitation';
 
 const useStyles = makeStyles({
   container: {
@@ -37,7 +37,8 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   headerBG: {
-    width: '67.5%',
+    width: '100%',
+    maxWidth: 973,
   },
   title: {
     fontFamily: 'Duster Regular',
@@ -219,9 +220,9 @@ const useStyles = makeStyles({
     justifyContent: 'flex-start',
     flexWrap: 'wrap',
     alignItems: 'flex-end',
-    height: 200,
   },
   moreQuestionsImage: {
+    marginRight: 30,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -249,34 +250,9 @@ const useStyles = makeStyles({
     letterSpacing: '0.02em',
   },
   textWrapper: {
+    marginTop: 30,
     display: 'flex',
     flexDirection: 'column',
-  },
-  invitation: {
-    maxWidth: 1139,
-    width: '79%',
-    margin: '0 auto',
-    background: '#F7F7F7',
-    marginTop: 96,
-    marginBottom: 42,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '45px 0',
-    position: 'relative',
-  },
-  invitationTitle: {
-    fontFamily: 'Duster Regular',
-    fontSize: 26,
-    textAlign: 'center',
-    color: '#3E245C',
-    marginBottom: 16,
-  },
-  mediumBrokenLineBlue: {
-    position: 'absolute',
-    left: '20.58%',
-    top: -10,
   },
   questionImageGroup: {
     width: '100%',
@@ -479,17 +455,7 @@ const HomePage = () => {
           </div>
         </div>
         <Carousel />
-        <div className={classes.invitation}>
-          <img
-            className={classes.mediumBrokenLineBlue}
-            alt="medium-broken-line-blue"
-            src={mediumBrokenLineBlue}
-          />
-          <h3 className={classes.invitationTitle}>
-            Construct your new questionnaire
-          </h3>
-          <button className={classes.startBtn}>Start the Survey</button>
-        </div>
+        <Invitation />
       </main>
     </div>
   );

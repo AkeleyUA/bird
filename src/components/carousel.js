@@ -98,13 +98,13 @@ const useStyles = makeStyles({
   productsHeader: {
     display: 'flex',
     justifyContent: 'space-between',
+    marginBottom: 16,
   },
   controlers: {
     display: 'flex',
     alignItems: 'center',
   },
   productsTitle: {
-    marginBottom: 16,
     fontFamily: 'Duster Regular',
     fontSize: 48,
     color: '#3E245C',

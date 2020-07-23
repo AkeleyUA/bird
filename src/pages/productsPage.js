@@ -38,7 +38,6 @@ const useStyles = makeStyles({
     padding: '15px 0',
   },
   bigBannerTitle: {
-    textAlign: 'center',
     fontFamily: 'Duster Regular',
     fontSize: 48,
     color: '#3E245C',
@@ -184,7 +183,7 @@ const ProductsPage = () => {
         />
       </div>
       <Grid container className={classes.bigBanner} justify="center">
-        <Grid item lg={4} md={4} sm={4} xs={11}>
+        <Grid item lg={4} md={4} sm={4} xs={11} className={classes.center}>
           <h6 className={classes.bigBannerTitle}>Pruduct Solutions</h6>
         </Grid>
         <Hidden only="xs">
@@ -207,16 +206,19 @@ const ProductsPage = () => {
       </Grid>
       <h6 className={classes.mainTitle}>Business Challenges</h6>
       <Grid container className={classes.productsContainer}>
-        <Grid item lg={3} xs={11}>
+        <Grid item lg={3} md={4} xs={12}>
           <Categories />
         </Grid>
-        <Grid item lg={9} xs={11}>
-          <Grid container spacing={3} justify="space-evenly">
+        <Grid item lg={9} md={8} xs={12}>
+          <Grid container spacing={3}>
             {productsArray.map(
               ({title, description, text, lineColors}, index) => (
                 <Grid
                   item
                   lg={4}
+                  md={6}
+                  sm={6}
+                  xs={12}
                   key={title + index}
                   className={classes.productWrapper}>
                   <ProductCard

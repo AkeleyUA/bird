@@ -12,6 +12,7 @@ import {
   List,
   ListItem,
   Icon,
+  Hidden,
 } from '@material-ui/core';
 import Categories from '../components/categories';
 import {productsArray} from '../hadrCodeData/products';
@@ -316,13 +317,13 @@ const useStyles = makeStyles({
   totalLink: {
     display: 'flex',
     marginLeft: 21,
-    width: '100%',
     textDecorationLine: 'none',
     fontFamily: 'PT Sans',
     fontWeight: 'bold',
     fontSize: 20,
     letterSpacing: '0.02em',
     color: '#3E245C',
+    paddingRight: 10,
   },
   totalLinkText: {
     marginLeft: 10,
@@ -336,7 +337,7 @@ const useStyles = makeStyles({
 });
 
 const NewSurveyPage = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(3);
   const [age, setAge] = useState([18, 50]);
   const [gender, setGender] = useState({female: true, male: true});
   const [childrenCouner, setChildrenCouner] = useState(2);
@@ -574,7 +575,7 @@ const NewSurveyPage = () => {
       )}
       {currentStep === 2 && (
         <>
-          <Grid item lg={1} />
+          <Grid item xl={1} />
           <Grid item lg={3} md={3} xs={11}>
             <Categories />
           </Grid>
@@ -602,7 +603,7 @@ const NewSurveyPage = () => {
               )}
             </Grid>
           </Grid>
-          <Grid item xs={10} className={classes.survayNameContainer}>
+          <Grid item lg={10} xs={11} className={classes.survayNameContainer}>
             <h6 className={classes.title}>Survey name</h6>
             <CustomInput3
               className={classes.rootSelect}
@@ -610,25 +611,28 @@ const NewSurveyPage = () => {
               disabled
             />
           </Grid>
-          <Grid item xs={12}>
-            <Grid container justify="space-between">
-              <Grid item xs={1}></Grid>
-              <Grid item xs={2}>
+          <Grid item lg={12} xs={11}>
+            <Grid container justify="center">
+              <Grid item lg={1}></Grid>
+              <Grid item md={2} sm={6} xs={12}>
                 <TotalCard
                   title="Template in use:"
                   description="Habits & Practices Exploratory"
                 />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item md={2} sm={6} xs={12}>
                 <TotalCard title="Completes:" description="600+" />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item md={2} sm={6} xs={12}>
                 <TotalCard title="Time to complete:" description="24 hours" />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item md={2} sm={6} xs={12}>
                 <TotalCard title="Total cost:" description="$600" />
               </Grid>
-              <Grid item xs={3}>
+              <Hidden lgUp smDown>
+                <Grid item xs={1} />
+              </Hidden>
+              <Grid item md={3} xs={11}>
                 <div className={classes.totalLinks}>
                   <Link to="/" className={classes.totalLink}>
                     <Icon>format_list_numbered</Icon>
@@ -658,30 +662,48 @@ const NewSurveyPage = () => {
               Objectives:​
             </h6>
           </Grid>
+          <Grid item xs={11}>
+            <Grid container>
+              <Grid item lg={5} style={{height: 40, background: 'red'}}>
+                <div className={classes.verticalGreyDivider} />
+                <div>
+                  <h6>Description for template:</h6>
+                  <p>Habits & Practices Exploratory</p>
+                </div>
+              </Grid>
+              <Grid
+                item
+                lg={7}
+                style={{height: 40, background: 'green'}}></Grid>
+            </Grid>
+          </Grid>
         </>
       )}
       <Grid item xs={10}>
         <Grid container className={classes.nextStep}>
           {currentStep === 2 && (
-            <>
-              <Grid item xs={3}>
+            <Hidden only="xs">
+              <Grid item lg={3} md={4} sm={5} xs={8}>
                 <button className={classes.saveBtn}>
                   Survey saved to drafts
                 </button>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item lg={6} md={5} sm={3} xs={4}>
                 <div className={classes.yellowDividder} />
               </Grid>
-            </>
+            </Hidden>
           )}
           {currentStep === 1 && (
-            <Grid item xs={9}>
+            <Grid item lg={9} md={8}>
               <div className={classes.yellowDividder} />
             </Grid>
           )}
           <Grid
             item
-            xs={3}
+            lg={3}
+            md={3}
+            sm={4}
+            xs={12}
             style={{display: 'flex', justifyContent: 'flex-end'}}>
             <button
               className={classes.nextStepBtn}

@@ -3,6 +3,9 @@ import smallCoin from '../images/small-coin.svg';
 import {makeStyles} from '@material-ui/styles';
 
 const useStyles = makeStyles({
+  card: {
+    marginBottom: 30,
+  },
   inline: {
     display: 'flex',
     alignItems: 'center',
@@ -30,7 +33,7 @@ const useStyles = makeStyles({
 const TotalCard = ({title, description}) => {
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.card}>
       <div className={classes.inline}>
         <img src={smallCoin} alt="small-coin" className={classes.img} />
         <h6 className={classes.title}>{title}</h6>

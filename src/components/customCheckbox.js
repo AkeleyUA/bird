@@ -10,6 +10,10 @@ const useStyles = makeStyles({
       backgroundColor: 'transparent',
     },
   },
+  small: {
+    transform: 'scale(0.8)',
+    borderWidth: 5,
+  },
   icon: {
     borderRadius: 3,
     width: 20,
@@ -45,22 +49,54 @@ const useStyles = makeStyles({
       backgroundColor: '#3E245C',
     },
   },
+  center: {display: 'flex', alignItems: 'center'},
+  label: {
+    fontFamily: 'PT Sans',
+    fontSize: 16,
+    color: '#000',
+    letterSpacing: '0.02em',
+  },
+  boldLabel: {
+    fontFamily: 'PT Sans',
+    fontSize: 16,
+    color: '#000',
+    letterSpacing: '0.02em',
+    fontWeight: 'bold',
+  },
 });
 
-const CustomCheckbox = (props) => {
+export const CustomCheckbox = (props) => {
   const classes = useStyles();
-
+  const {variant} = props;
   return (
     <Checkbox
-      className={classes.root}
+      className={
+        variant === 'small' ? clsx(classes.root, classes.small) : classes.root
+      }
       disableRipple
       color="default"
       checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
       icon={<span className={classes.icon} />}
-      inputProps={{'aria-label': 'decorative checkbox'}}
       {...props}
     />
   );
 };
+export const Label = ({icon, text}, props) => {
+  const classes = useStyles();
+  return (
+    <div {...props} className={classes.center}>
+      {icon && <img src={icon} alt={text} />}
+      <span className={classes.label}>{text}</span>
+    </div>
+  );
+};
 
-export default CustomCheckbox;
+export const BoldLabel = ({icon, text}, props) => {
+  const classes = useStyles();
+  return (
+    <div {...props} className={classes.center}>
+      {icon && <img src={icon} alt={text} />}
+      <span className={classes.boldLabel}>{text}</span>
+    </div>
+  );
+};

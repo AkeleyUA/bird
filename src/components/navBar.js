@@ -148,8 +148,8 @@ const links = [
     path: '/products',
   },
   {
-    name: 'Industry Solutions',
-    path: '/industry-solutions',
+    name: 'About',
+    path: '/about',
   },
 ];
 

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/styles';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles({
   productCard: {
@@ -66,6 +67,10 @@ const useStyles = makeStyles({
     fontSize: 13,
     letterSpacing: '0.02em',
     color: '#3E245C',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textDecorationLine: 'none',
   },
 });
 
@@ -134,7 +139,11 @@ const ProductCard = ({title, children, description, colors, btn}) => {
         <h6 className={classes.cardTitle}>{title}</h6>
         <p className={classes.description}>{description}</p>
         <p className={classes.text}>{children}</p>
-        {btn && <button className={classes.btn}>Start the Survey</button>}
+        {btn && (
+          <Link to="/products/:1" className={classes.btn}>
+            Start the Survey
+          </Link>
+        )}
       </main>
     </div>
   );

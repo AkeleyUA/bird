@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {makeStyles, withStyles} from '@material-ui/styles';
+import clsx from 'clsx';
 import Stepper from '../components/stepper';
 import {
   Grid,
@@ -15,7 +16,7 @@ import Categories from '../components/categories';
 import {productsArray} from '../hadrCodeData/products';
 import ProductCard from '../components/productCard';
 import thumb from '../images/thumb.svg';
-import CustomCheckbox from '../components/customCheckbox';
+import {CustomCheckbox, Label, BoldLabel} from '../components/customCheckbox';
 import manIcon from '../images/icon-man-purple.svg';
 import womanIcon from '../images/icon-woman-purple.svg';
 
@@ -63,13 +64,29 @@ const marks = [
 ];
 
 const CustomInput = withStyles(() => ({
-  root: {},
+  root: {
+    background: '#FFF',
+  },
   input: {
     borderRadius: 4,
     position: 'relative',
     fontFamily: 'PT Sans',
     fontSize: 16,
     padding: '10px 26px 10px 12px',
+    color: '#8C9DD0',
+  },
+}))(InputBase);
+
+const CustomInput2 = withStyles(() => ({
+  root: {
+    background: '#FFF',
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    fontFamily: 'PT Sans',
+    fontSize: 16,
+    padding: '10px 12px 10px 12px',
     color: '#8C9DD0',
   },
 }))(InputBase);
@@ -140,9 +157,25 @@ const useStyles = makeStyles({
   mb: {
     marginBottom: 100,
   },
-  root: {
+  w80: {
+    width: '80%',
+  },
+  rootSelect: {
     width: '100%',
     maxWidth: 405,
+    border: '2px solid #8C9DD0',
+    outline: 'none',
+    boxSizing: 'border-box',
+    borderRadius: 8,
+    '&:focuse': {
+      outline: 'none',
+    },
+    '&:hover': {
+      outline: 'none',
+    },
+  },
+  rootInput: {
+    maxWidth: 63,
     border: '2px solid #8C9DD0',
     outline: 'none',
     boxSizing: 'border-box',
@@ -176,27 +209,79 @@ const useStyles = makeStyles({
     color: '#FFDC00',
   },
   genderContainer: {},
+  checkedListItem: {
+    background: '#F7F7F7',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  listItem: {
+    background: '#FFF',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  subContentContainerCheckedList: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  subContentContainerCounter: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  counterBtn: {
+    width: 21,
+    height: 21,
+    borderRadius: '50%',
+    fontFamily: 'PT Sans',
+    fontWeight: 'bold',
+    fontSize: 13,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    letterSpacing: '0.02em',
+    color: '#000000',
+    border: '1px solid #8C9DD0',
+    margin: '0 7px',
+    cursor: 'pointer',
+    '&:disabled': {
+      opacity: 0.4,
+    },
+  },
+  nextStep: {
+    marginTop: 95,
+    marginBottom: 147,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  yellowDividder: {
+    width: '100%',
+    height: 3,
+    background: '#FFDC00',
+  },
+  nextStepBtn: {
+    width: 264,
+    height: 56,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: '#3E245C',
+    borderRadius: 8,
+    fontFamily: 'Duster Regular',
+    fontSize: 26,
+    color: '#FFDC00',
+  },
 });
-
-const Label = ({icon, text}) => (
-  <div style={{display: 'flex', alignItems: 'center'}}>
-    {icon && <img src={icon} alt={text} />}
-    <span
-      style={{
-        fontFamily: 'PT Sans',
-        fontSize: 16,
-        color: '#000',
-        letterSpacing: '0.02em',
-      }}>
-      {text}
-    </span>
-  </div>
-);
 
 const NewSurveyPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [age, setAge] = useState([18, 50]);
   const [gender, setGender] = useState({female: true, male: true});
+  const [childrenCouner, setChildrenCouner] = useState(2);
+  const [maritalStatus, setMaritalStatus] = useState([
+    {subName: 'Married', subChecked: false},
+    {subName: 'Single', subChecked: false},
+    {subName: 'Divorced', subChecked: false},
+  ]);
   const [demographic, setDemographic] = useState([
     {
       name: 'No additional criteria',
@@ -205,10 +290,32 @@ const NewSurveyPage = () => {
     {
       name: 'Marital status',
       checked: true,
+      actions: {type: 'checkboxList', subContent: maritalStatus},
     },
     {
       name: 'Number of children',
       checked: true,
+      actions: {type: 'counter', subContent: childrenCouner},
+    },
+    {
+      name: 'Education​',
+      checked: false,
+    },
+    {
+      name: 'Employment',
+      checked: false,
+    },
+    {
+      name: 'Career',
+      checked: false,
+    },
+    {
+      name: 'Ethnicity',
+      checked: false,
+    },
+    {
+      name: 'Household income',
+      checked: false,
     },
   ]);
   const classes = useStyles();
@@ -221,10 +328,36 @@ const NewSurveyPage = () => {
   };
 
   const changeDemographicHandler = ({target: {id}}, value) => {
-    setDemographic((prevState) => [
-      ...prevState.finter((_, index) => index !== id),
-      {...prevState[id], checked: value},
-    ]);
+    setDemographic((prevState) => {
+      const newArray = [...prevState];
+      newArray[id].checked = value;
+      return newArray;
+    });
+  };
+
+  const changeMaritalStatusHandler = ({target: {id}}, value) => {
+    console.log(maritalStatus);
+    setMaritalStatus((prevState) => {
+      const newArray = [...prevState];
+      newArray[id].subChecked = value;
+      return newArray;
+    });
+  };
+
+  const changeChildrenCounter = ({target}) => {
+    setChildrenCouner(target.value < 99 ? +target.value : 99);
+  };
+
+  const addChildren = () => {
+    setChildrenCouner((prevState) =>
+      prevState < 99 ? prevState + 1 : prevState,
+    );
+  };
+
+  const delChildren = () => {
+    setChildrenCouner((prevState) =>
+      prevState > 0 ? prevState - 1 : prevState,
+    );
   };
 
   return (
@@ -244,7 +377,7 @@ const NewSurveyPage = () => {
               <Select
                 defaultValue="USA"
                 input={<CustomInput />}
-                className={classes.root}>
+                className={classes.rootSelect}>
                 <MenuItem value="USA">USA</MenuItem>
                 <MenuItem value="Canada">Canada</MenuItem>
                 <MenuItem value="Europe">Europe</MenuItem>
@@ -294,9 +427,14 @@ const NewSurveyPage = () => {
           <Grid item sm={5}>
             <h6 className={classes.title}>Demographic Criteria​</h6>
             <List>
-              {demographic.map(({name, checked}, index) => (
-                <ListItem key={name}>
+              {demographic.map(({name, checked, actions}, index) => (
+                <ListItem
+                  key={name}
+                  className={
+                    checked ? classes.checkedListItem : classes.listItem
+                  }>
                   <FormControlLabel
+                    style={{width: '100%'}}
                     value="end"
                     control={
                       <CustomCheckbox
@@ -305,12 +443,83 @@ const NewSurveyPage = () => {
                         onChange={changeDemographicHandler}
                       />
                     }
-                    label={<Label text={name} />}
+                    label={
+                      checked ? (
+                        <BoldLabel text={name} />
+                      ) : (
+                        <Label text={name} />
+                      )
+                    }
                     labelPlacement="end"
                   />
+                  {checked && actions && actions.type === 'checkboxList' && (
+                    <div
+                      className={clsx(
+                        classes.subContentContainerCheckedList,
+                        classes.w80,
+                      )}>
+                      {actions.subContent.map(
+                        ({subName, subChecked}, index) => (
+                          <FormControlLabel
+                            key={subName}
+                            value="end"
+                            control={
+                              <CustomCheckbox
+                                variant="small"
+                                checked={subChecked}
+                                id={`${index}`}
+                                onChange={changeMaritalStatusHandler}
+                              />
+                            }
+                            label={<Label text={subName} />}
+                            labelPlacement="end"
+                          />
+                        ),
+                      )}
+                    </div>
+                  )}
+                  {checked && actions && actions.type === 'counter' && (
+                    <div
+                      className={clsx(
+                        classes.subContentContainerCounter,
+                        classes.w80,
+                      )}>
+                      <button
+                        className={classes.counterBtn}
+                        disabled={childrenCouner <= 0}
+                        onClick={delChildren}>
+                        -1
+                      </button>
+                      <CustomInput2
+                        className={classes.rootInput}
+                        value={childrenCouner}
+                        onChange={changeChildrenCounter}
+                      />
+                      <button
+                        className={classes.counterBtn}
+                        disabled={childrenCouner >= 99}
+                        onClick={addChildren}>
+                        +1
+                      </button>
+                    </div>
+                  )}
                 </ListItem>
               ))}
             </List>
+          </Grid>
+          <Grid item xs={10}>
+            <Grid container className={classes.nextStep} spacing={4}>
+              <Grid item xs={9}>
+                <div className={classes.yellowDividder} />
+              </Grid>
+              <Grid item xs={3}>
+                <button
+                  className={classes.nextStepBtn}
+                  onClick={() => setCurrentStep(2)}>
+                  Next Step
+                </button>
+              </Grid>
+            </Grid>
           </Grid>
         </>
       )}

@@ -29,6 +29,9 @@ const useStyles = makeStyles({
     fontSize: 20,
     letterSpacing: '0.02em',
     color: '#3E245C',
+    height: 64,
+    display: 'flex',
+    alignItems: 'center',
   },
   linkGroup: {},
   dividerActive: {
@@ -93,7 +96,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
   },
   activeStepLable: {
-    maxWidth: 179,
+    maxWidth: '83%',
     margin: '16px auto',
     fontFamily: 'PT Sans',
     fontWeight: 'bold',
@@ -103,7 +106,7 @@ const useStyles = makeStyles({
     color: '#3E245C',
   },
   disableStepLable: {
-    maxWidth: 179,
+    maxWidth: '83%',
     margin: '16px auto',
     fontFamily: 'PT Sans',
     fontSize: 20,
@@ -112,7 +115,7 @@ const useStyles = makeStyles({
     color: '#8C9DD0',
   },
   finishStepLable: {
-    maxWidth: 179,
+    maxWidth: '83%',
     margin: '16px auto',
     fontFamily: 'PT Sans',
     fontSize: 20,
@@ -129,15 +132,15 @@ const steps = [
   },
   {
     step: 2,
-    label: 'Select your target market & audience',
+    label: 'Choose the Survey Tool​',
   },
   {
     step: 3,
-    label: 'Select your target market & audience',
+    label: 'Customize Your Survey​',
   },
   {
     step: 4,
-    label: 'Select your target market & audience',
+    label: 'Final Checks & Activate Your Survey',
   },
 ];
 
@@ -146,11 +149,7 @@ const Stepper = ({currentStep}) => {
   return (
     <Grid container className={classes.container} justify="center">
       <Grid item md={2}>
-        <Grid
-          container
-          justify="space-between"
-          alignItems="center"
-          style={{height: '85.7%'}}>
+        <Grid container justify="space-between" alignItems="center">
           <Grid item xs={8} className={classes.linkGroup}>
             <h6 className={classes.linkGroupTitle}>New Survey</h6>
           </Grid>

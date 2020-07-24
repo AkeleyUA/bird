@@ -11,6 +11,7 @@ import {
   FormControlLabel,
   List,
   ListItem,
+  Icon,
 } from '@material-ui/core';
 import Categories from '../components/categories';
 import {productsArray} from '../hadrCodeData/products';
@@ -19,6 +20,9 @@ import thumb from '../images/thumb.svg';
 import {CustomCheckbox, Label, BoldLabel} from '../components/customCheckbox';
 import manIcon from '../images/icon-man-purple.svg';
 import womanIcon from '../images/icon-woman-purple.svg';
+import TotalCard from '../components/totalCard';
+import arrowRight from '../images/arrow-right.svg';
+import {Link} from 'react-router-dom';
 
 const marks = [
   {
@@ -88,6 +92,21 @@ const CustomInput2 = withStyles(() => ({
     fontSize: 16,
     padding: '10px 12px 10px 12px',
     color: '#8C9DD0',
+  },
+}))(InputBase);
+
+const CustomInput3 = withStyles(() => ({
+  root: {
+    background: '#FFF',
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    fontFamily: 'PT Sans',
+    fontSize: 16,
+    padding: '10px 12px 10px 12px',
+    color: '#3E245C',
+    fontWeight: 'bold',
   },
 }))(InputBase);
 
@@ -247,7 +266,7 @@ const useStyles = makeStyles({
     },
   },
   nextStep: {
-    marginTop: 95,
+    marginTop: 122,
     marginBottom: 147,
     display: 'flex',
     justifyContent: 'space-between',
@@ -269,6 +288,50 @@ const useStyles = makeStyles({
     fontFamily: 'Duster Regular',
     fontSize: 26,
     color: '#FFDC00',
+  },
+  saveBtn: {
+    width: '100%',
+    height: 56,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: '#FFDC00',
+    borderRadius: 8,
+    fontFamily: 'Duster Bold',
+    fontSize: 26,
+    color: '#3E245C',
+  },
+  survayNameContainer: {
+    marginTop: 77,
+    marginBottom: 40,
+  },
+  totalLinks: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    height: 141,
+    background: '#F7F7F7',
+    marginLeft: -40,
+  },
+  totalLink: {
+    display: 'flex',
+    marginLeft: 21,
+    width: '100%',
+    textDecorationLine: 'none',
+    fontFamily: 'PT Sans',
+    fontWeight: 'bold',
+    fontSize: 20,
+    letterSpacing: '0.02em',
+    color: '#3E245C',
+  },
+  totalLinkText: {
+    marginLeft: 10,
+    marginRight: 15,
+  },
+  stepTitle3: {
+    fontFamily: 'Duster Regular',
+    fontSize: 48,
+    color: '#8C9DD0',
   },
 });
 
@@ -507,28 +570,15 @@ const NewSurveyPage = () => {
               ))}
             </List>
           </Grid>
-          <Grid item xs={10}>
-            <Grid container className={classes.nextStep} spacing={4}>
-              <Grid item xs={9}>
-                <div className={classes.yellowDividder} />
-              </Grid>
-              <Grid item xs={3}>
-                <button
-                  className={classes.nextStepBtn}
-                  onClick={() => setCurrentStep(2)}>
-                  Next Step
-                </button>
-              </Grid>
-            </Grid>
-          </Grid>
         </>
       )}
       {currentStep === 2 && (
         <>
-          <Grid item lg={3} md={4} xs={12}>
+          <Grid item lg={1} />
+          <Grid item lg={3} md={3} xs={11}>
             <Categories />
           </Grid>
-          <Grid item lg={9} md={8} xs={12}>
+          <Grid item lg={8} md={8} xs={11}>
             <Grid container spacing={3}>
               {productsArray.map(
                 ({title, description, text, lineColors}, index) => (
@@ -552,8 +602,99 @@ const NewSurveyPage = () => {
               )}
             </Grid>
           </Grid>
+          <Grid item xs={10} className={classes.survayNameContainer}>
+            <h6 className={classes.title}>Survey name</h6>
+            <CustomInput3
+              className={classes.rootSelect}
+              value="Habits & Practices Exploratory"
+              disabled
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="space-between">
+              <Grid item xs={1}></Grid>
+              <Grid item xs={2}>
+                <TotalCard
+                  title="Template in use:"
+                  description="Habits & Practices Exploratory"
+                />
+              </Grid>
+              <Grid item xs={2}>
+                <TotalCard title="Completes:" description="600+" />
+              </Grid>
+              <Grid item xs={2}>
+                <TotalCard title="Time to complete:" description="24 hours" />
+              </Grid>
+              <Grid item xs={2}>
+                <TotalCard title="Total cost:" description="$600" />
+              </Grid>
+              <Grid item xs={3}>
+                <div className={classes.totalLinks}>
+                  <Link to="/" className={classes.totalLink}>
+                    <Icon>format_list_numbered</Icon>
+                    <p className={classes.totalLinkText}>
+                      Master Questionnaire Preread​
+                    </p>
+                    <img src={arrowRight} alt="arrow-right" />
+                  </Link>
+                  <Link to="/" className={classes.totalLink}>
+                    <Icon>visibility</Icon>
+                    <p className={classes.totalLinkText}>
+                      Report Template Preread
+                    </p>
+                    <img src={arrowRight} alt="arrow-right" />
+                  </Link>
+                </div>
+              </Grid>
+            </Grid>
+          </Grid>
         </>
       )}
+      {currentStep === 3 && (
+        <>
+          <Grid item xs={10}>
+            <h6 className={classes.stepTitle3}>
+              Let’s Customize the Master Questionnaire to Your Survey
+              Objectives:​
+            </h6>
+          </Grid>
+        </>
+      )}
+      <Grid item xs={10}>
+        <Grid container className={classes.nextStep}>
+          {currentStep === 2 && (
+            <>
+              <Grid item xs={3}>
+                <button className={classes.saveBtn}>
+                  Survey saved to drafts
+                </button>
+              </Grid>
+              <Grid item xs={6}>
+                <div className={classes.yellowDividder} />
+              </Grid>
+            </>
+          )}
+          {currentStep === 1 && (
+            <Grid item xs={9}>
+              <div className={classes.yellowDividder} />
+            </Grid>
+          )}
+          <Grid
+            item
+            xs={3}
+            style={{display: 'flex', justifyContent: 'flex-end'}}>
+            <button
+              className={classes.nextStepBtn}
+              onClick={() =>
+                setCurrentStep((prevState) =>
+                  prevState < 4 ? prevState + 1 : 1,
+                )
+              }>
+              Next Step
+            </button>
+          </Grid>
+        </Grid>
+      </Grid>
     </Grid>
   );
 };

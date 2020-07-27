@@ -70,7 +70,7 @@ const Footer = () => {
         <Hidden only="xs">
           <Grid item lg={2} sm={3} className={classes.list}>
             <h6 className={classes.title}>Company</h6>
-            <Link to="/" className={classes.link}>
+            <Link to="/contacts" className={classes.link}>
               Contact
             </Link>
             <Link to="/" className={classes.link}>
@@ -171,7 +171,7 @@ const Footer = () => {
           <Link to="/" className={classes.titleListItem}>
             Case Studies
           </Link>
-          <Link to="/" className={classes.titleListItem}>
+          <Link to="/FAQ" className={classes.titleListItem}>
             FAQ
           </Link>
           <Link to="/" className={classes.titleListItem}>

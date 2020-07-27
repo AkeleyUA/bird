@@ -6,7 +6,7 @@ import mediumBrokenLine from '../images/medium-broken-line.svg';
 import Categories from '../components/categories';
 import ProductCard from '../components/productCard';
 import {Grid, Hidden} from '@material-ui/core';
-import {productsArray} from '../hadrCodeData/products';
+import {productsArray} from '../hardCodeData/products';
 
 const useStyles = makeStyles({
   container: {

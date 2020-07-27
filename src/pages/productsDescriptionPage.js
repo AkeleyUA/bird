@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {makeStyles} from '@material-ui/styles';
 import {Breadcrumbs, Icon, Grid, Typography, Hidden} from '@material-ui/core';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import bigCoin from '../images/big-coin.svg';
 import ionMan from '../images/ion-man.svg';
 import ionWoman from '../images/ion-woman.svg';
@@ -208,6 +208,11 @@ const useStyles = makeStyles({
 const ProductsDescriptionPage = () => {
   const classes = useStyles();
   const [isLike, setIsLike] = useState(false);
+  const {pathname} = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const likeHandler = () => {
     setIsLike((prevState) => !prevState);

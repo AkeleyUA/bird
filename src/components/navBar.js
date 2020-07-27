@@ -7,7 +7,7 @@ import netWork from '../images/network.svg';
 import plus from '../images/plus.svg';
 import user from '../images/user.svg';
 import CoinBtn from './coinBtn';
-import {Hidden, Drawer} from '@material-ui/core';
+import {Hidden, Drawer, Button} from '@material-ui/core';
 
 const useStyles = makeStyles({
   navContainer: {
@@ -37,8 +37,12 @@ const useStyles = makeStyles({
     marginRight: 45,
     marginLeft: 40,
   },
+  logoButton: {
+    borderRadius: '50%',
+  },
   link: {
     display: 'flex',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     fontFamily: 'PT Sans, sans-serif',
     textDecoration: 'none',
@@ -50,6 +54,7 @@ const useStyles = makeStyles({
     borderRadius: 50,
     position: 'relative',
     padding: '8px 28px 8px 20px',
+    textTransform: 'none',
     color: '#3E245C',
     '&:active': {
       color: '#3E245C',
@@ -66,6 +71,9 @@ const useStyles = makeStyles({
     background: '#FFDC00',
     '& div': {
       backgroundColor: '#F7F7F7',
+    },
+    '&:hover': {
+      background: '#FFDC00',
     },
   },
   quickAcsessContainer: {
@@ -156,15 +164,16 @@ const links = [
 const Links = ({onClick}) => {
   const classes = useStyles();
   return links.map(({path, name}) => (
-    <NavLink
+    <Button
       key={path}
       onClick={onClick}
       className={classes.link}
+      component={NavLink}
       to={path}
-      activeClassName={classes.active}>
-      <div className={classes.round} />
+      activeClassName={classes.active}
+      startIcon={<div className={classes.round} />}>
       {name}
-    </NavLink>
+    </Button>
   ));
 };
 const NavBar = () => {
@@ -183,7 +192,7 @@ const NavBar = () => {
     <nav className={classes.navContainer}>
       <div className={classes.leftSide}>
         <Hidden smDown>
-          <NavLink to="/">
+          <NavLink to="/" className={classes.logoButton}>
             <img src={logo} className={classes.logo} alt="logo" />
           </NavLink>
           <div className={classes.linksContainer}>
@@ -196,9 +205,9 @@ const NavBar = () => {
           </div>
           <Drawer anchor="left" open={open} onClose={closeHandler}>
             <div className={classes.menu}>
-              <NavLink to="/" onClick={closeHandler}>
+              <Button to="/" onClick={closeHandler} component={NavLink}>
                 <img src={logo} className={classes.logo} alt="logo" />
-              </NavLink>
+              </Button>
               <Links onClick={closeHandler} />
             </div>
           </Drawer>
@@ -222,7 +231,9 @@ const NavBar = () => {
           </div>
         </Hidden>
         <div className={classes.user}>
-          <CoinBtn src={user}>My Office</CoinBtn>
+          <Link to="/my-office" style={{textDecoration: 'none'}}>
+            <CoinBtn src={user}>My Office</CoinBtn>
+          </Link>
         </div>
       </div>
     </nav>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {makeStyles} from '@material-ui/styles';
 import brokenLineBold from '../images/broken-line-bold.svg';
 import {
@@ -16,6 +16,7 @@ import coinWhiteBorder from '../images/coin-white-border.svg';
 import brokenLineThinYellow from '../images/broken-line-thin-yellow.svg';
 import brokenLineThinGrey from '../images/broken-line-thin-grey.svg';
 import YellowCross from '../components/yellowCross';
+import {useLocation} from 'react-router-dom';
 
 const useStyles = makeStyles({
   container: {
@@ -250,6 +251,11 @@ const compareItems = [
 
 const PricingPage = () => {
   const classes = useStyles();
+  const {pathname} = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <div className={classes.container}>
       <img

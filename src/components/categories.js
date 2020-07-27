@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/styles';
-import {categoriesArray} from '../hadrCodeData/categories';
+import {categoriesArray} from '../hardCodeData/categories';
 
 const useStyles = makeStyles({
   container: {
@@ -54,7 +54,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Categories = () => {
+const Categories = ({categories = categoriesArray}) => {
   const classes = useStyles();
   const [isSelected, setIsSelected] = useState('All');
 
@@ -63,7 +63,7 @@ const Categories = () => {
   };
   return (
     <div className={classes.container}>
-      {categoriesArray.map(({name, img, color}) => (
+      {categories.map(({name, img, color, Icon}) => (
         <button
           key={name}
           id={name}
@@ -78,6 +78,7 @@ const Categories = () => {
           {color && (
             <div className={classes.round} style={{background: color}} />
           )}
+          {Icon && <div className={classes.svg}>{<Icon />}</div>}
         </button>
       ))}
     </div>

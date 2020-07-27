@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {makeStyles} from '@material-ui/styles';
 import {Grid, Hidden} from '@material-ui/core';
 import Invitation from '../components/invitation';
 import stepImg1 from '../images/step-1-img.svg';
 import stepImg2 from '../images/step-2-img.svg';
 import stepImg3 from '../images/step-3-img.svg';
+import {useLocation} from 'react-router-dom';
 
 const useStyles = makeStyles({
   container: {
@@ -134,6 +135,12 @@ const useStyles = makeStyles({
 
 const HowItWorksPage = () => {
   const classes = useStyles();
+  const {pathname} = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <Grid container className={classes.container} justify="center">
       <Grid sm={10} xs={11} item component="h6" className={classes.pageTitile}>

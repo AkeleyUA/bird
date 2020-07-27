@@ -3,6 +3,9 @@ import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import check from '../images/check.svg';
+import {withStyles} from '@material-ui/styles';
+import {InputBase} from '@material-ui/core';
+import {Rating} from '@material-ui/lab';
 
 const useStyles = makeStyles({
   root: {
@@ -13,6 +16,9 @@ const useStyles = makeStyles({
   small: {
     transform: 'scale(0.8)',
     borderWidth: 5,
+  },
+  large: {
+    transform: 'scale(1.2)',
   },
   icon: {
     borderRadius: 3,
@@ -100,3 +106,82 @@ export const BoldLabel = ({icon, text}, props) => {
     </div>
   );
 };
+
+export const CustomInput = withStyles(() => ({
+  root: {
+    background: '#FFF',
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    fontFamily: 'PT Sans',
+    fontSize: 16,
+    padding: '10px 26px 10px 12px',
+    color: '#8C9DD0',
+  },
+}))(InputBase);
+
+export const CustomInput2 = withStyles(() => ({
+  root: {
+    background: '#FFF',
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    fontFamily: 'PT Sans',
+    fontSize: 16,
+    padding: '10px 12px 10px 12px',
+    color: '#8C9DD0',
+  },
+}))(InputBase);
+
+export const CustomInput3 = withStyles(() => ({
+  root: {
+    background: '#FFF',
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    fontFamily: 'PT Sans',
+    fontSize: 16,
+    padding: '10px 12px 10px 12px',
+    color: '#3E245C',
+    fontWeight: 'bold',
+  },
+}))(InputBase);
+
+export const CustomInput4 = withStyles(() => ({
+  root: {
+    background: '#FFF',
+  },
+  input: {
+    borderRadius: 4,
+    position: 'relative',
+    fontFamily: 'PT Sans',
+    fontSize: 16,
+    color: '#3E245C',
+    fontWeight: 'bold',
+  },
+}))(InputBase);
+
+export const CustomRating = withStyles({
+  iconFilled: {
+    color: '#8C9DD0',
+  },
+  iconHover: {
+    color: '#8C9DD0',
+  },
+})(Rating);
+
+export const CustomRating2 = withStyles({
+  icon: {
+    color: '#ccd9ff',
+    marginLeft: 10,
+  },
+  iconFilled: {
+    color: '#8C9DD0',
+  },
+  iconHover: {
+    color: '#8C9DD0',
+  },
+})(Rating);
